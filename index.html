@@ -1107,7 +1107,7 @@ footer{background:var(--surface);padding:44px 0 36px;color:var(--muted);font-siz
 @media(max-width:760px){.ex2 .ex-ach{font-size:12.5px!important;margin-right:-10px}}
 
 /* Canh 3 ảnh vào giữa khung (bù phần ghi chú bên phải) */
-@media(min-width:1301px){.ex-row{width:min(1200px,100vw - 190px)!important;gap:30px!important;transform:translateX(calc(-50% + (min(1200px,100vw - 190px) - 60px) * .06))!important}}
+@media(min-width:1301px){.ex-row{width:min(1260px,100vw - 80px)!important;gap:30px!important;transform:translateX(-50%)!important}}
 
 /* ===== Dàn cố vấn Hub Tâm Giao ===== */
 .hub{margin:110px auto 0;max-width:1200px}
@@ -1140,6 +1140,164 @@ footer{background:var(--surface);padding:44px 0 36px;color:var(--muted);font-siz
 .hub-dots button.on{background:#e3c565;transform:scale(1.25)}
 @media(max-width:1024px){.hub-card{flex-basis:calc((100% - 48px)/3)}}
 @media(max-width:760px){.hub{margin-top:80px}.hub-card{flex-basis:72%}.hub-prev{left:-6px}.hub-next{right:-6px}.hub-nav{width:38px;height:38px}}
+.hub-photo{aspect-ratio:4/4.4!important;background:radial-gradient(circle at 50% 30%,#2b5372 0%,#13293a 75%)!important}
+.hub-photo{display:flex;align-items:flex-end}
+.hub-photo img{height:92%!important;object-fit:cover;object-position:center top}
+
+/* Ảnh cố vấn Hub: người nhỏ gọn, thấy đủ nửa thân, không phóng to */
+.hub-photo{aspect-ratio:4/3.5!important;display:flex;align-items:flex-end;justify-content:center;background:radial-gradient(ellipse at 50% 38%,#2f5a7a 0%,#1a3448 55%,#13293a 100%)!important}
+.hub-photo img{width:auto!important;height:90%!important;max-width:88%;object-fit:contain!important;object-position:center bottom!important;transform:none!important;filter:drop-shadow(0 8px 14px rgba(0,0,0,.35))}
+
+/* 3 cố vấn chính: người trong khung nhỏ lại nhẹ */
+.ex-img{display:flex;align-items:flex-end;justify-content:center}
+.ex-img img{width:auto!important;height:90%!important;max-width:92%;object-fit:contain!important;object-position:center bottom!important}
+@media(max-width:760px){.ex2 .ex-ach{left:auto!important;width:auto!important;max-width:none!important}}
+
+/* Anh Dũng: mũi tên từ chữ (phải) vòng sang trái, đầu chĩa xuống ảnh */
+.ex2 .ex-arrow-down{display:none}
+@media(min-width:761px){
+  .ex2 .ex-ach .ex-arrow-top{display:none!important}
+  .ex2 .ex-ach .ex-arrow-down{display:block;width:66px;height:84px;left:-62px;top:24px;bottom:auto;transform:none}
+}
+
+/* Chị Hương: ghi chú bên trái, đối xứng với chị Lan */
+.ex1{grid-template-columns:minmax(0,36%) minmax(0,64%)!important}
+.ex1 .ex-photo{grid-column:2!important}
+.ex1 .ex-note{grid-column:1!important;padding-left:0!important;padding-right:18px}
+.ex1 .ex-ach{transform:rotate(-4deg)!important}
+.ex1 .ex-str{transform:rotate(4deg)!important}
+.ex1 .ex-arrow-top{left:auto!important;right:-78px!important;transform:scaleX(-1)!important}
+.ex1 .ex-arrow-bot{left:auto!important;right:-80px!important;transform:scaleX(-1)!important}
+@media(max-width:760px){
+  .ex1 .ex-arrow-top{right:-58px!important}
+  .ex1 .ex-arrow-bot{right:-60px!important}
+  .ex1 .ex-note{padding-right:14px}
+}
+
+
+/* Anh Dũng: thế mạnh xuống dưới ảnh, mũi tên chĩa lên tên */
+.ex2 .ex-arrow-up{display:none}
+@media(min-width:1301px){
+  .ex-row{width:min(1180px,100vw - 120px)!important;gap:18px!important}
+  .ex2{grid-template-columns:1fr!important}
+  .ex2 .ex-photo{grid-column:1!important;width:66%;justify-self:center}
+  .ex2 .ex-ach{left:52%!important}
+  .ex2 .ex-str{position:absolute!important;grid-column:auto!important;top:calc(100% - 6px);bottom:auto;left:58%;margin:0!important;padding:0!important;transform:rotate(3deg)!important;text-align:left;white-space:nowrap}
+  .ex2 .ex-str .ex-arrow-bot{display:none!important}
+  .ex2 .ex-str .ex-arrow-up{display:block;width:56px;height:64px;left:-58px;top:-44px;transform:none}
+  .ex-row{padding-bottom:70px}
+}
+
+/* Mũi tên dính sát chữ như chị Lan */
+@media(min-width:761px){
+  .ex1 .ex-ach .ex-arrow-top{right:-42px!important}
+  .ex1 .ex-str .ex-arrow-bot{right:-55px!important}
+  .ex2 .ex-ach .ex-arrow-down{left:-34px!important}
+}
+.pol-img{display:block;width:100%;height:auto!important;aspect-ratio:4/3;object-fit:cover}
+.polaroid figcaption.pol-cap-l{text-align:left;left:22px;right:auto}
+.polaroid figcaption{font-family:var(--font)!important;font-weight:600!important;font-size:16px!important;letter-spacing:.01em;color:#0c1b26!important;bottom:12px!important}
+
+/* ===== Dành cho ai: 6 thẻ tối ===== */
+.fit2{margin-top:96px}
+.fit2-title{text-align:center;font-size:clamp(28px,3.6vw,44px)!important;margin-bottom:48px}
+.fit2-mk{position:relative;display:inline-block;color:#a8842f}
+.fit2-mk::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:6px;border-radius:6px;background:linear-gradient(90deg,#c9a33f,#e3c565 60%,#f7e5a8)}
+.fit2-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.fit2-card{background:linear-gradient(160deg,#1a3448 0%,#0f2231 100%);border:1px solid rgba(227,197,101,.18);border-radius:22px;padding:26px 24px 28px;color:#fff;box-shadow:0 14px 30px rgba(12,27,38,.18);transition:transform .25s,border-color .25s}
+.fit2-card:hover{transform:translateY(-4px);border-color:rgba(227,197,101,.5)}
+.fit2-top{display:flex;gap:16px;align-items:flex-start;margin-bottom:14px}
+.fit2-ic{flex:0 0 56px;height:56px;border-radius:12px;border:1px solid rgba(227,197,101,.35);background:rgba(227,197,101,.08);display:flex;align-items:center;justify-content:center;color:#e3c565}
+.fit2-ic svg{width:28px;height:28px}
+.fit2-card h3{font-family:var(--display);font-weight:800;font-size:17px;line-height:1.4;text-transform:uppercase;color:#e3c565;letter-spacing:.01em}
+.fit2-card p{font-size:15px;line-height:1.65;color:rgba(255,255,255,.78)}
+.fit2-hl{display:flex;align-items:center;background:linear-gradient(160deg,#13293a 0%,#0a1620 100%);border-color:rgba(227,197,101,.45)}
+.fit2-big{font-family:var(--display);font-weight:800!important;font-size:17px!important;line-height:1.6!important;text-transform:uppercase;color:#fff!important}
+.fit2-big u{color:#e3c565;text-decoration-thickness:2px;text-underline-offset:4px}
+@media(max-width:1024px){.fit2-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.fit2{margin-top:72px}.fit2-grid{grid-template-columns:1fr;gap:18px}.fit2-card{padding:22px 20px}}
+
+.fit2-cta{text-align:center;margin-top:44px}
+.fit2-cta p{font-size:clamp(18px,1.8vw,22px);line-height:1.6;color:#3b4650}
+.fit2-line1{display:block}
+.fit2-line1 b{color:#a8842f;font-weight:700}
+.fit2-line2 u{color:#a8842f;text-decoration-thickness:1.5px;text-underline-offset:5px}
+.fit2-swirl{display:inline-block;vertical-align:middle;margin-right:10px;width:64px;height:32px;fill:none;stroke:#0c1b26;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.fit2-btn{margin-top:26px}
+@media(max-width:640px){.fit2-swirl{width:48px;height:24px}}
+.fit2-line1 b,.fit2-line2 u{font-family:var(--script)!important;font-style:italic;font-weight:700!important;font-size:1.12em}
+.fit2-swirl{width:56px!important;height:40px!important;stroke:#c9a33f!important;stroke-width:2.4!important;vertical-align:-2px!important}
+.fit2-line1{position:relative}
+.fit2-swirl{position:absolute!important;width:150px!important;height:80px!important;margin:0!important;left:-156px;bottom:.35em;vertical-align:baseline!important}
+.fit2-line1-txt{position:relative;display:inline-block}
+@media(max-width:1024px){.fit2-swirl{display:none!important}}
+
+/* Tiêu đề hạng vé: 1 dòng, khoanh "2 HẠNG VÉ" */
+.stages .section-head{max-width:none}
+.stages-title{white-space:nowrap;font-size:clamp(22px,3.6vw,44px)!important;padding-top:.3em}
+.stages .section-head h2 .circled{padding:0 .34em!important;margin-right:.3em!important}
+.stages .section-head h2 .circled{padding:0 .28em;margin-right:.18em}
+.stages .section-head h2 .circled::after{inset:-.42em -.2em -.3em!important;border-width:3px!important;border-radius:50%!important;transform:rotate(-2deg)!important}
+@media(max-width:560px){.stages-title{white-space:normal;font-size:28px!important}.stages-title .st-rest{display:block;white-space:nowrap;margin-top:.35em}.stages .section-head h2 .circled{margin-right:0!important}}
+.testi-h{font-family:var(--display);font-weight:800;font-size:17px;line-height:1.35;color:#0c1b26;margin-top:8px}
+.testi blockquote{font-size:15px!important;line-height:1.7!important}
+
+/* ================= MOBILE LAYOUT (tham khảo Ramsey mobile) ================= */
+@media(max-width:760px){
+  /* 1. HERO: tiêu đề -> 3 người lớn chiếm nửa dưới */
+  .hero{padding:44px 0 0!important}
+  .hero .hero-facts{display:none!important}
+  .hero .hero-desc{font-size:14.5px!important;margin-top:22px!important}
+  .hero .hero-cta{margin-top:22px!important}
+  .hero-team{margin-top:26px!important;width:calc(100% + 32px);margin-left:-16px!important;justify-content:center}
+  .tm-l img{height:300px!important}
+  .tm-c img{height:318px!important}
+  .tm-r img{height:272px!important;margin-bottom:22px!important}
+  .tm-l{margin-right:-78px!important}
+  .tm-r{margin-left:-80px!important}
+  .tm .nametag{bottom:70px!important}
+  .nametag b{font-size:15px!important;max-width:120px!important}
+  .tm-l .nametag{left:44%!important}.tm-r .nametag{left:56%!important}
+
+  /* 2. SPEAKER: ảnh so le trái/phải, chồng nhẹ lên nhau */
+  .ex-row{row-gap:0!important}
+  .ex{width:100%}
+  .ex2,.ex3{margin-top:-28px!important}
+  .ex3{grid-template-columns:minmax(0,36%) minmax(0,64%)!important}
+  .ex3 .ex-photo{grid-column:2!important}
+  .ex3 .ex-note{grid-column:1!important;padding-left:0!important;padding-right:14px}
+  .ex3 .ex-ach{transform:rotate(-4deg)!important}
+  .ex3 .ex-str{transform:rotate(4deg)!important}
+  .ex3 .ex-arrow-top{left:auto!important;right:-58px!important;transform:scaleX(-1)!important}
+  .ex3 .ex-arrow-bot{left:auto!important;right:-60px!important;transform:scaleX(-1)!important}
+  .ex1 .ex-photo{--r:4deg}.ex2 .ex-photo{--r:-4deg}.ex3 .ex-photo{--r:3deg}
+  .ex2{z-index:2}
+
+  /* 3. PHƯƠNG PHÁP: A-N-T-Â-M chạy dọc */
+  .tiles{flex-direction:column!important;align-items:stretch!important;gap:14px!important}
+  .tile{width:100%!important;max-width:none!important;display:grid!important;grid-template-columns:92px 1fr;grid-template-rows:auto auto auto;column-gap:16px;align-items:center;padding:12px!important}
+  .tile-face{grid-row:1/4;width:92px;height:92px;aspect-ratio:auto!important;font-size:56px!important}
+  .tile-name{margin:0!important;min-height:0!important;justify-content:flex-start!important;text-align:left!important;font-size:15px!important}
+  .tile-q{min-height:0!important;text-align:left!important;padding:0!important;margin-top:2px!important}
+  .tile-day{min-height:0!important;padding-top:4px!important;justify-content:flex-start!important;text-align:left!important}
+
+  /* 4. CẢM NHẬN: carousel 1 thẻ, chữ căn giữa, chấm tròn */
+  .testi-grid{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;padding:6px 4px 20px;scrollbar-width:none;margin:0 -16px;padding-left:16px;padding-right:16px}
+  .testi-grid::-webkit-scrollbar{display:none}
+  .testi{flex:0 0 88%;scroll-snap-align:center;text-align:center;align-items:center;border-top-width:6px!important}
+  .testi>svg{margin:0 auto}
+  .testi .who{border-left:none!important;padding-left:0!important;position:relative;padding-top:10px}
+  .testi .who::before{content:"";display:block;width:3px;height:28px;background:var(--orange-red);margin:0 auto 8px}
+  .testi-dots{display:flex!important}
+}
+.testi-dots{display:none;justify-content:center;gap:10px;margin-top:6px}
+.testi-dots button{width:10px;height:10px;border-radius:50%;border:none;padding:0;background:#d6d9dc;cursor:pointer}
+.testi-dots button.on{background:#0c1b26}
+@media(max-width:760px){
+ .tm-l .nametag{left:62%!important}.tm-r .nametag{left:38%!important}
+ .nametag b{font-size:14px!important;max-width:110px!important}
+ .ex2,.ex3{margin-top:18px!important}
+}
 </style>
 </head>
 <body>
@@ -1260,7 +1418,7 @@ footer{background:var(--surface);padding:44px 0 36px;color:var(--muted);font-siz
   <span class="doodle" style="bottom:14%;left:8%;width:30px;height:30px"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
   <div class="container">
     <div class="section-head on-dark reveal">
-      <h2 class="display">Cố vấn chính tại <span class="script">Hành trình An Tâm</span></h2>
+      <h2 class="display">Speaker tại <span class="script">Hành trình An Tâm</span></h2>
       <p class="lead">Những người sẽ đồng hành cùng gia đình bạn trong Hành trình An Tâm.</p>
     </div>
     <div class="ex-row">
@@ -1277,8 +1435,8 @@ footer{background:var(--surface);padding:44px 0 36px;color:var(--muted);font-siz
           <div class="ex-img"><img src="expert/Dung.png" alt="Nguyễn Anh Dũng" loading="lazy"></div>
           <figcaption><span class="ex-role">Cố vấn tài chính</span><span class="ex-name">Nguyễn Anh Dũng</span></figcaption>
         </figure>
-        <p class="ex-note ex-ach">Á khoa kỳ thi đánh giá năng lực Hoạch định tài chính cá nhân lần thứ 5<svg class="ex-arrow ex-arrow-top" viewBox="0 0 90 60" aria-hidden="true"><path d="M86 6 C 70 30, 45 44, 10 44"/><path d="M20 34 L 8 44 L 21 53"/></svg></p>
-        <p class="ex-note ex-str"><span class="ex-lbl">Thế mạnh:</span><span class="ex-kw">Bảo hiểm<svg class="ex-circle" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M30 8 C 90 -2, 180 4, 194 24 C 204 44, 150 58, 90 56 C 30 54, 2 44, 6 28 C 10 14, 50 6, 110 6"/></svg></span><svg class="ex-arrow ex-arrow-bot" viewBox="0 0 90 60" aria-hidden="true"><path d="M84 54 C 66 50, 36 34, 12 14"/><path d="M11 29 L 10 12 L 26 14"/></svg></p>
+        <p class="ex-note ex-ach">Á khoa kỳ thi đánh giá năng lực Hoạch định Tài chính Cá nhân<svg class="ex-arrow ex-arrow-top" viewBox="0 0 90 60" aria-hidden="true"><path d="M86 6 C 70 30, 45 44, 10 44"/><path d="M20 34 L 8 44 L 21 53"/></svg><svg class="ex-arrow ex-arrow-down" viewBox="0 0 70 90" aria-hidden="true"><path d="M66 8 C 40 8, 16 24, 14 78"/><path d="M5 67 L 14 82 L 23 68"/></svg></p>
+        <p class="ex-note ex-str"><span class="ex-lbl">Thế mạnh:</span><span class="ex-kw">Bảo hiểm<svg class="ex-circle" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M30 8 C 90 -2, 180 4, 194 24 C 204 44, 150 58, 90 56 C 30 54, 2 44, 6 28 C 10 14, 50 6, 110 6"/></svg></span><svg class="ex-arrow ex-arrow-bot" viewBox="0 0 90 60" aria-hidden="true"><path d="M84 54 C 66 50, 36 34, 12 14"/><path d="M11 29 L 10 12 L 26 14"/></svg><svg class="ex-arrow ex-arrow-up" viewBox="0 0 70 80" aria-hidden="true"><path d="M66 70 C 40 68, 18 52, 14 12"/><path d="M5 24 L 14 8 L 23 23"/></svg></p>
       </div>
       <div class="ex ex3 reveal" style="--r:-3deg">
         <figure class="ex-photo">
@@ -1299,56 +1457,50 @@ footer{background:var(--surface);padding:44px 0 36px;color:var(--muted);font-siz
         <button class="hub-nav hub-prev" type="button" aria-label="Xem cố vấn trước"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
         <div class="hub-track" id="hubTrack">
         <article class="hub-card">
-          <!-- CỐ VẤN 1: thay .hub-ph bằng <img src="expert/ten-anh.jpg" alt="Tên cố vấn"> (ảnh vuông hoặc 4:5, nền tách hoặc nền màu) -->
-          <div class="hub-photo"><div class="hub-ph"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div></div>
+          <div class="hub-photo"><img src="expert/hub-le-thi-hoa.webp" alt="Lê Thị Hoà - Cố vấn tài chính Hub Tâm Giao" loading="lazy"></div>
           <div class="hub-body">
-            <h4 class="hub-name">[Tên cố vấn 1]</h4>
-            <p class="hub-role">[Chức danh]</p>
+            <h4 class="hub-name">Lê Thị Hoà</h4>
+            <p class="hub-role">Cố vấn tài chính</p>
             <a href="#" class="btn hub-btn">Xem hồ sơ</a>
           </div>
         </article>
         <article class="hub-card">
-          <!-- CỐ VẤN 2: thay .hub-ph bằng <img src="expert/ten-anh.jpg" alt="Tên cố vấn"> (ảnh vuông hoặc 4:5, nền tách hoặc nền màu) -->
-          <div class="hub-photo"><div class="hub-ph"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div></div>
+          <div class="hub-photo"><img src="expert/hub-le-thi-phuong-thu.webp" alt="Lê Thị Phương Thu - Cố vấn tài chính Hub Tâm Giao" loading="lazy"></div>
           <div class="hub-body">
-            <h4 class="hub-name">[Tên cố vấn 2]</h4>
-            <p class="hub-role">[Chức danh]</p>
+            <h4 class="hub-name">Lê Thị Phương Thu</h4>
+            <p class="hub-role">Cố vấn tài chính</p>
             <a href="#" class="btn hub-btn">Xem hồ sơ</a>
           </div>
         </article>
         <article class="hub-card">
-          <!-- CỐ VẤN 3: thay .hub-ph bằng <img src="expert/ten-anh.jpg" alt="Tên cố vấn"> (ảnh vuông hoặc 4:5, nền tách hoặc nền màu) -->
-          <div class="hub-photo"><div class="hub-ph"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div></div>
+          <div class="hub-photo"><img src="expert/hub-dao-tran-minh-thuy.webp" alt="Đào Trần Minh Thuỷ - Cố vấn tài chính Hub Tâm Giao" loading="lazy"></div>
           <div class="hub-body">
-            <h4 class="hub-name">[Tên cố vấn 3]</h4>
-            <p class="hub-role">[Chức danh]</p>
+            <h4 class="hub-name">Đào Trần Minh Thuỷ</h4>
+            <p class="hub-role">Cố vấn tài chính</p>
             <a href="#" class="btn hub-btn">Xem hồ sơ</a>
           </div>
         </article>
         <article class="hub-card">
-          <!-- CỐ VẤN 4: thay .hub-ph bằng <img src="expert/ten-anh.jpg" alt="Tên cố vấn"> (ảnh vuông hoặc 4:5, nền tách hoặc nền màu) -->
-          <div class="hub-photo"><div class="hub-ph"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div></div>
+          <div class="hub-photo"><img src="expert/hub-dinh-thuc.webp" alt="Đinh Thức - Cố vấn tài chính Hub Tâm Giao" loading="lazy"></div>
           <div class="hub-body">
-            <h4 class="hub-name">[Tên cố vấn 4]</h4>
-            <p class="hub-role">[Chức danh]</p>
+            <h4 class="hub-name">Đinh Thức</h4>
+            <p class="hub-role">Cố vấn tài chính</p>
             <a href="#" class="btn hub-btn">Xem hồ sơ</a>
           </div>
         </article>
         <article class="hub-card">
-          <!-- CỐ VẤN 5: thay .hub-ph bằng <img src="expert/ten-anh.jpg" alt="Tên cố vấn"> (ảnh vuông hoặc 4:5, nền tách hoặc nền màu) -->
-          <div class="hub-photo"><div class="hub-ph"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div></div>
+          <div class="hub-photo"><img src="expert/hub-dang-thi-my-xim.webp" alt="Đặng Thị Mỹ Xim - Cố vấn tài chính Hub Tâm Giao" loading="lazy"></div>
           <div class="hub-body">
-            <h4 class="hub-name">[Tên cố vấn 5]</h4>
-            <p class="hub-role">[Chức danh]</p>
+            <h4 class="hub-name">Đặng Thị Mỹ Xim</h4>
+            <p class="hub-role">Cố vấn tài chính</p>
             <a href="#" class="btn hub-btn">Xem hồ sơ</a>
           </div>
         </article>
         <article class="hub-card">
-          <!-- CỐ VẤN 6: thay .hub-ph bằng <img src="expert/ten-anh.jpg" alt="Tên cố vấn"> (ảnh vuông hoặc 4:5, nền tách hoặc nền màu) -->
-          <div class="hub-photo"><div class="hub-ph"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div></div>
+          <div class="hub-photo"><img src="expert/hub-ho-van-quyen.webp" alt="Hồ Văn Quyền - Cố vấn tài chính Hub Tâm Giao" loading="lazy"></div>
           <div class="hub-body">
-            <h4 class="hub-name">[Tên cố vấn 6]</h4>
-            <p class="hub-role">[Chức danh]</p>
+            <h4 class="hub-name">Hồ Văn Quyền</h4>
+            <p class="hub-role">Cố vấn tài chính</p>
             <a href="#" class="btn hub-btn">Xem hồ sơ</a>
           </div>
         </article>
@@ -1516,9 +1668,8 @@ footer{background:var(--surface);padding:44px 0 36px;color:var(--muted);font-siz
   <div class="container">
     <div class="fp-layout">
       <div class="polaroids reveal">
-        <!-- TODO: thay .photo-ph bằng <img> ảnh thật (hai vợ chồng, buổi 1-1 với cố vấn) -->
-        <figure class="polaroid"><div class="photo-ph"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Ảnh hai vợ chồng cùng xem sổ tài sản</div><figcaption>Tối Chủ nhật</figcaption></figure>
-        <figure class="polaroid"><div class="photo-ph"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Ảnh buổi gặp cố vấn 1-1</div><figcaption>Buổi 1-1</figcaption></figure>
+        <figure class="polaroid"><img class="pol-img" src="branding/buoi-1-1-a.webp" alt="Cố vấn Tâm Giao khám sức khỏe tài chính cho khách hàng" loading="lazy" width="1000" height="750"><figcaption class="pol-cap-l">Khám tài chính</figcaption></figure>
+        <figure class="polaroid"><img class="pol-img" src="branding/buoi-1-1-b.webp" alt="Buổi gặp cố vấn 1-1 tại Hub Tâm Giao" loading="lazy" width="1000" height="750"><figcaption>Buổi 1-1</figcaption></figure>
       </div>
       <div class="fp-text reveal">
         <span class="eyebrow">Sau thử thách</span>
@@ -1530,22 +1681,37 @@ footer{background:var(--surface);padding:44px 0 36px;color:var(--muted);font-siz
       </div>
     </div>
 
-    <div class="fit">
-      <div class="fit-card reveal">
-        <h3>Dành cho bạn <span class="script">nếu...</span></h3>
-        <ul>
-          <li><span class="ic"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Bạn là trụ cột tài chính, có người đang sống nhờ thu nhập của mình</li>
-          <li><span class="ic"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Thu nhập ổn nhưng chưa có bức tranh tài chính tổng thể</li>
-          <li><span class="ic"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Đã mua bảo hiểm hoặc đầu tư nhưng không chắc đúng, đủ</li>
-          <li><span class="ic"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Muốn hai vợ chồng cùng thống nhất về tiền</li>
-        </ul>
+    <div class="fit2">
+      <h2 class="fit2-title display reveal"><span class="script">Hành trình</span> này dành cho bạn nếu...</h2>
+      <div class="fit2-grid">
+      <div class="fit2-card reveal">
+        <div class="fit2-top"><span class="fit2-ic"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Z"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg></span><h3>Thu nhập khoảng 15-30 triệu/tháng, hoặc nhiều hơn.</h3></div>
+        <p>Cuộc sống nhìn chung vẫn ổn, nhưng cuối tháng nhìn lại vẫn thường tự hỏi: "Tiền của mình đã đi đâu?"</p>
       </div>
-      <div class="fit-card no reveal">
-        <h3>Có thể chưa phù hợp</h3>
-        <ul>
-          <li><span class="ic"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Bạn đang tìm cách làm giàu nhanh</li>
-          <li><span class="ic"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Bạn muốn một mã cổ phiếu hay một sản phẩm cụ thể để mua ngay</li>
-        </ul>
+      <div class="fit2-card reveal">
+        <div class="fit2-top"><span class="fit2-ic"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span><h3>Thu nhập đã tăng hơn vài năm trước</h3></div>
+        <p>Nhưng tiền tiết kiệm và tài sản lại chưa tăng tương xứng. Bạn làm ra nhiều hơn, nhưng chưa cảm thấy mình đang thực sự giàu lên.</p>
+      </div>
+      <div class="fit2-card reveal">
+        <div class="fit2-top"><span class="fit2-ic"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></span><h3>Bạn muốn bắt đầu đầu tư và làm tiền sinh sôi</h3></div>
+        <p>Nhưng giữa quá nhiều lựa chọn, bạn chưa biết mình nên làm gì trước, làm gì sau và đâu mới là bước phù hợp với tình hình hiện tại.</p>
+      </div>
+      <div class="fit2-card reveal">
+        <div class="fit2-top"><span class="fit2-ic"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M14.5 9.5a3 3 0 0 0-5 0M14.5 14.5a3 3 0 0 1-5 0M12 7v2M12 15v2"/></svg></span><h3>Bạn muốn có quỹ dự phòng, tài sản và thêm những dòng thu nhập mới</h3></div>
+        <p>Thay vì mỗi tháng lại bắt đầu lại từ con số gần như cũ.</p>
+      </div>
+      <div class="fit2-card reveal">
+        <div class="fit2-top"><span class="fit2-ic"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg></span><h3>Bạn đã đọc sách, xem video, nghe rất nhiều lời khuyên về tiền...</h3></div>
+        <p>Nhưng càng học càng thấy có nhiều mảnh kiến thức rời rạc và thiếu một bản đồ đủ rõ để ghép tất cả lại với nhau.</p>
+      </div>
+      <div class="fit2-card fit2-hl reveal">
+        <p class="fit2-big">Bạn không muốn dành 5-10 năm tiếp theo chỉ để <u>cố kiếm nhiều hơn rồi lại nâng mức sống lên</u>, trong khi cảm giác bất an về tiền vẫn còn nguyên.</p>
+      </div>
+      </div>
+      <div class="fit2-cta reveal">
+        <p class="fit2-line1"><span class="fit2-line1-txt"><svg class="fit2-swirl" viewBox="0 0 150 80" aria-hidden="true"><path d="M6 4 C 14 40, 50 66, 138 62"/><path d="M126 53 L 140 62 L 127 71"/></svg>Hãy tham gia cùng <b>Tâm Giao</b> để...</span></p>
+        <p class="fit2-line2">bắt đầu hành trình <u>tạo dựng đời sống tài chính an tâm</u></p>
+        <a href="#form" class="btn btn-primary btn-hero fit2-btn">Đăng Ký Quan Tâm</a>
       </div>
     </div>
   </div>
@@ -1558,7 +1724,7 @@ footer{background:var(--surface);padding:44px 0 36px;color:var(--muted);font-siz
   <span class="doodle" style="top:14%;right:6%;width:30px;height:30px"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></span>
   <div class="container">
     <div class="section-head on-dark reveal">
-      <h2 class="display"><span class="circled">2</span> hạng vé cho gia đình bạn</h2>
+      <h2 class="display stages-title"><span class="circled">2 hạng vé</span> <span class="st-rest">cho gia đình bạn</span></h2>
       <p class="lead">Bắt đầu với Standard, hoặc chọn VIP để gặp riêng cố vấn và có lộ trình 10 năm cho gia đình.</p>
     </div>
     <!-- ===== 2 HẠNG VÉ ===== -->
@@ -1615,12 +1781,13 @@ footer{background:var(--surface);padding:44px 0 36px;color:var(--muted);font-siz
       <span class="eyebrow">Cảm nhận</span>
       <h2 class="display">Những gia đình đã <span class="script">đi qua hành trình</span></h2>
     </div>
-    <!-- TODO: thay bằng cảm nhận THẬT của khách (có sự đồng ý). Không dùng cảm nhận tự viết. -->
+    
     <div class="testi-grid">
-      <div class="testi reveal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.75-2-2-2H4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2h3M14 21c3 0 7-1 7-8V5c0-1.25-.75-2-2-2h-4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2h3"/></svg><blockquote>"[Trích dẫn cảm nhận thật, ưu tiên chi tiết cụ thể: điều gia đình phát hiện ra sau thử thách]"</blockquote><div class="who"><b>[Tên khách]</b><span>[tuổi], [nghề], [thành phố]</span></div></div>
-      <div class="testi reveal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.75-2-2-2H4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2h3M14 21c3 0 7-1 7-8V5c0-1.25-.75-2-2-2h-4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2h3"/></svg><blockquote>"[Trích dẫn cảm nhận thật, ví dụ về buổi 1-1 với cố vấn]"</blockquote><div class="who"><b>[Tên khách]</b><span>[tuổi], [nghề], [thành phố]</span></div></div>
-      <div class="testi reveal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.75-2-2-2H4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2h3M14 21c3 0 7-1 7-8V5c0-1.25-.75-2-2-2h-4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2h3"/></svg><blockquote>"[Trích dẫn cảm nhận thật, ví dụ về việc hai vợ chồng cùng nhìn một bức tranh]"</blockquote><div class="who"><b>[Tên khách]</b><span>[tuổi], [nghề], [thành phố]</span></div></div>
+      <div class="testi reveal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.75-2-2-2H4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2h3M14 21c3 0 7-1 7-8V5c0-1.25-.75-2-2-2h-4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2h3"/></svg><h3 class="testi-h">Phát hiện ra vấn đề tài chính gia đình</h3><blockquote>"Trước đây tôi cứ nghĩ gia đình mình có tài sản là đã ổn. Nhưng sau khi làm bài đánh giá, tôi mới thấy tài sản đang nằm ở nhiều nơi, mỗi khoản một mục tiêu và chưa có một kế hoạch tổng thể. Điều tôi bất ngờ nhất là nếu có một biến cố lớn xảy ra, gia đình tôi chưa thực sự có phương án rõ ràng để bảo vệ những gì mình đã tích lũy."</blockquote><div class="who"><b>Anh Minh, 42 tuổi</b><span>Chủ doanh nghiệp, TP. Hồ Chí Minh</span></div></div>
+      <div class="testi reveal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.75-2-2-2H4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2h3M14 21c3 0 7-1 7-8V5c0-1.25-.75-2-2-2h-4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2h3"/></svg><h3 class="testi-h">Giá trị từ buổi 1-1 với Cố vấn</h3><blockquote>"Điều tôi thích nhất ở buổi 1-1 là cố vấn không đưa ngay cho tôi một sản phẩm để mua. Thay vào đó, họ hỏi rất kỹ về thu nhập, tài sản, các khoản nợ, mục tiêu của gia đình và cả kế hoạch cho con. Sau buổi đó, tôi lần đầu tiên nhìn được toàn bộ bức tranh tài chính của mình trên cùng một hệ thống và biết mình cần ưu tiên điều gì trước."</blockquote><div class="who"><b>Chị Lan, 38 tuổi</b><span>Quản lý cấp cao, Hà Nội</span></div></div>
+      <div class="testi reveal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.75-2-2-2H4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2h3M14 21c3 0 7-1 7-8V5c0-1.25-.75-2-2-2h-4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2h3"/></svg><h3 class="testi-h">Hai vợ chồng cùng nhìn một bức tranh</h3><blockquote>"Trước đây hai vợ chồng tôi vẫn nói về tiền bạc, nhưng mỗi người lại có một cách nhìn khác nhau. Sau khi cùng ngồi với cố vấn và nhìn chung một bức tranh tài chính, chúng tôi mới hiểu mình đang có gì, muốn đạt được điều gì và cần chuẩn bị cho tương lai ra sao. Quan trọng nhất là từ đó, hai vợ chồng có cùng một kế hoạch thay vì mỗi người tự quyết một phần."</blockquote><div class="who"><b>Anh Tuấn &amp; Chị Hương, 40 &amp; 37 tuổi</b><span>Kinh doanh, TP. Hồ Chí Minh</span></div></div>
     </div>
+    <div class="testi-dots" id="testiDots"></div>
   </div>
 </section>
 
@@ -1919,6 +2086,16 @@ document.querySelectorAll('[data-pick]').forEach(function(btn){
   t.addEventListener('scroll',function(){window.requestAnimationFrame(update);},{passive:true});
   window.addEventListener('resize',build);
   build();
+})();
+
+
+/* ========== Testimonial dots (mobile) ========== */
+(function(){
+  var g=document.querySelector('.testi-grid'),d=document.getElementById('testiDots');if(!g||!d)return;
+  var cards=g.querySelectorAll('.testi');
+  cards.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Cảm nhận '+(i+1));b.addEventListener('click',function(){g.scrollTo({left:c.offsetLeft-g.offsetLeft-16,behavior:'smooth'});});d.appendChild(b);});
+  function upd(){var c=g.scrollLeft+g.clientWidth/2,best=0,bd=1e9;cards.forEach(function(k,i){var m=k.offsetLeft-g.offsetLeft+k.offsetWidth/2,dd=Math.abs(m-c);if(dd<bd){bd=dd;best=i;}});[].forEach.call(d.children,function(b,i){b.classList.toggle('on',i===best);});}
+  g.addEventListener('scroll',function(){requestAnimationFrame(upd);},{passive:true});upd();
 })();
 
 /* ========== FAQ ========== */
