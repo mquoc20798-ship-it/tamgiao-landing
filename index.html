@@ -433,17 +433,25 @@ h2 .script,h3 .script,.display .script{font-size:calc(1.05em + 5px)!important;ve
 .final-cta .lead{color:#fff;opacity:.9;max-width:680px;margin:18px auto 0}
 .final-cta .hero-cta{margin-top:30px}
 
-/* =================== FOOTER =================== */
-footer{background:var(--surface);padding:44px 0 36px;color:var(--muted);font-size:14px}
-.footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
-.footer-contact{display:flex;flex-wrap:wrap;gap:10px 24px}
-.footer-contact span{display:inline-flex;align-items:center;gap:8px}
-.footer-contact svg{width:18px;height:18px;color:var(--blue)}
-.footer-links{display:flex;gap:22px;flex-wrap:wrap;margin-top:24px}
-.footer-links a{color:var(--text);text-decoration:none;font-weight:500}
-.footer-links a:hover{color:var(--blue)}
-.disclaimer{margin-top:20px;font-size:13px;line-height:1.6;max-width:880px}
-.footer-copy{margin-top:14px;font-size:13px}
+/* =================== FOOTER (Dark Disclaimer) =================== */
+footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-size:14px;text-align:center}
+.footer-wrap{max-width:1040px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;align-items:center}
+.disclaimer-box{max-width:960px;margin:0 auto}
+.disclaimer-title{font-family:var(--display);font-weight:800;font-size:clamp(14.5px,1.8vw,17px);color:#fff;letter-spacing:.05em;text-transform:uppercase;margin-bottom:20px}
+.disclaimer-title .tag-en{color:#c4e538;margin-left:4px}
+.disclaimer-p{font-size:clamp(13px,1.2vw,14.5px);line-height:1.75;color:rgba(255,255,255,.82);margin-bottom:16px;text-align:center;text-wrap:pretty}
+.disclaimer-p:last-of-type{margin-bottom:0}
+.footer-links{display:flex;justify-content:center;align-items:center;gap:18px;flex-wrap:wrap;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1)}
+.footer-links a{color:rgba(255,255,255,.65);text-decoration:none;font-size:13.5px;transition:color .2s}
+.footer-links a:hover{color:#e3c565}
+.footer-links .sep{color:rgba(255,255,255,.3)}
+.footer-copy{margin-top:14px;font-size:12.5px;color:rgba(255,255,255,.42)}
+@media(max-width:768px){
+  footer{padding:48px 0 100px}
+  .footer-wrap{padding:0 16px}
+  .disclaimer-p{font-size:13px;line-height:1.65;margin-bottom:14px}
+  .footer-links{gap:12px;margin-top:24px;padding-top:18px}
+}
 
 /* Sticky CTA mobile */
 .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:900;background:#fff;box-shadow:0 -6px 16px rgba(31,36,38,.15);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:none;transform:translateY(110%);transition:transform .3s}
@@ -454,6 +462,27 @@ footer{background:var(--surface);padding:44px 0 36px;color:var(--muted);font-siz
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* Floating Music Button (Góc dưới bên trái) */
+.music-toggle{position:fixed;left:20px;bottom:24px;z-index:910;display:inline-flex;align-items:center;gap:8px;background:rgba(12,27,38,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;border:1px solid rgba(227,197,101,.55);padding:8px 14px 8px 10px;border-radius:30px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.45);transition:all .3s cubic-bezier(.4,0,.2,1);user-select:none;-webkit-tap-highlight-color:transparent}
+.music-toggle:hover{background:#13293a;border-color:#e3c565;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.55)}
+.music-toggle:active{transform:scale(.96)}
+.music-icon-wrap{width:28px;height:28px;border-radius:50%;background:rgba(227,197,101,.18);display:flex;align-items:center;justify-content:center;color:#e3c565;flex-shrink:0;transition:all .3s}
+.music-toggle.is-playing .music-icon-wrap{background:#e3c565;color:#0c1b26;box-shadow:0 0 12px rgba(227,197,101,.6);animation:pulse-music 2s infinite}
+.music-label{font-family:var(--font);font-size:13px;font-weight:600;color:#fff;letter-spacing:.02em;white-space:nowrap}
+.music-waves{display:none;align-items:flex-end;gap:2px;height:12px;margin-left:2px}
+.music-toggle.is-playing .music-waves{display:inline-flex}
+.music-wave-bar{width:2px;background:#e3c565;border-radius:1px;animation:wave-bar 1s ease-in-out infinite alternate}
+.music-wave-bar:nth-child(1){height:6px;animation-delay:0s}
+.music-wave-bar:nth-child(2){height:12px;animation-delay:.25s}
+.music-wave-bar:nth-child(3){height:8px;animation-delay:.45s}
+@keyframes wave-bar{0%{height:3px}100%{height:12px}}
+@keyframes pulse-music{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+
+@media(max-width:768px){
+  .music-toggle{left:14px;bottom:20px;padding:7px 12px 7px 8px}
+  .music-toggle.shift-up{bottom:76px!important}
+}
 
 /* =================== RESPONSIVE =================== */
 @media(max-width:1024px){
@@ -947,7 +976,7 @@ footer{background:var(--surface);padding:44px 0 36px;color:var(--muted);font-siz
   .tm-l img{height:210px}.tm-c img{height:222px}.tm-r img{height:170px;margin-bottom:30px}
   .tm-l{margin-right:-34px}.tm-r{margin-left:-34px}
   .nametag{padding:5px 9px 4px}
-  .nametag b{font-size:10px}.nametag span{display:none}
+  .nametag b{font-size:10px}.nametag span{display:inline-block!important;font-size:6px!important}
   .tm::after{height:22px}
   .tm-l::after{width:92px}.tm-c::after{width:96px}.tm-r::after{width:66px}
   .tm-r .nametag{bottom:calc(26% + 30px)}.tm-r::after{bottom:calc(26% + 24px)}
@@ -973,8 +1002,8 @@ footer{background:var(--surface);padding:44px 0 36px;color:var(--muted);font-siz
 .tm-r .nametag{bottom:calc(16% + clamp(30px,3.6vw,52px))!important}
 .nametag::before{content:"";position:absolute;inset:-18px -28px;z-index:-1;background:radial-gradient(ellipse at center,rgba(8,18,26,.62),transparent 70%)}
 @media(max-width:560px){
-  .nametag b{font-size:11.5px!important;white-space:normal;max-width:100px}
-  .nametag span{display:none!important}
+  .nametag b{font-size:11.5px!important;white-space:nowrap!important;max-width:none!important}
+  .nametag span{display:inline-block!important;font-size:6.5px!important;letter-spacing:.08em!important}
   .tm-l .nametag,.tm-c .nametag{bottom:22%!important}
   .tm-r .nametag{bottom:calc(18% + 30px)!important}
 }
@@ -1242,27 +1271,124 @@ footer{background:var(--surface);padding:44px 0 36px;color:var(--muted);font-siz
 .testi-h{font-family:var(--display);font-weight:800;font-size:17px;line-height:1.35;color:#0c1b26;margin-top:8px}
 .testi blockquote{font-size:15px!important;line-height:1.7!important}
 
-/* ================= MOBILE LAYOUT (tham khảo Ramsey mobile) ================= */
+/* ================= MOBILE LAYOUT (chuẩn chỉnh như Desktop) ================= */
 @media(max-width:760px){
-  /* 1. HERO: tiêu đề -> 3 người lớn chiếm nửa dưới */
-  .hero{padding:44px 0 0!important}
+  /* 1. HERO */
+  .hero{padding:44px 0 0!important;overflow:hidden!important}
+  .hero-stage{padding:0!important}
+  .hero-center{padding:0 16px!important}
   .hero .hero-facts{display:none!important}
   .hero .hero-desc{font-size:14.5px!important;margin-top:22px!important}
   .hero .hero-cta{margin-top:22px!important}
-  .hero-team{margin-top:26px!important;width:calc(100% + 32px);margin-left:-16px!important;justify-content:center}
-  .tm-l img{height:300px!important}
-  .tm-c img{height:318px!important}
-  .tm-r img{height:272px!important;margin-bottom:22px!important}
-  .tm-l{margin-right:-78px!important}
-  .tm-r{margin-left:-80px!important}
-  .tm .nametag{bottom:70px!important}
-  .nametag b{font-size:15px!important;max-width:120px!important}
-  .tm-l .nametag{left:44%!important}.tm-r .nametag{left:56%!important}
+  
+  /* Hero-team: căn giữa, dàn ngang 3 chuyên gia */
+  .hero-team{
+    display:flex!important;
+    justify-content:center!important;
+    align-items:flex-end!important;
+    width:100%!important;
+    margin:28px auto 0!important;
+    padding:0!important;
+    position:relative!important;
+    transform:none!important;
+    line-height:0!important;
+  }
+  .tm{position:relative!important;margin:0!important;flex:0 0 auto!important;line-height:0!important}
+  .tm img{display:block!important;width:auto!important;filter:drop-shadow(0 16px 28px rgba(0,0,0,.45))!important}
+
+  /* Chị Hương (trái): đứng sau vai anh Dũng */
+  .tm-l{z-index:auto!important;margin-right:-85px!important}
+  .tm-l img{height:295px!important;position:relative!important;z-index:1!important}
+
+  /* Anh Dũng (giữa): to nhất, đứng trước 2 chị */
+  .tm-c{z-index:auto!important;margin:0!important}
+  .tm-c img{height:320px!important;position:relative!important;z-index:2!important}
+
+  /* Chị Lan (phải): xích qua trái 10px (-95px) và cao lên 10px (margin-bottom: 30px) */
+  .tm-r{z-index:auto!important;margin-left:-95px!important}
+  .tm-r img{height:270px!important;margin-bottom:30px!important;position:relative!important;z-index:1!important}
+
+  /* MÉP GIẤY RÁCH: Phải có z-index cao hơn cả 3 ảnh để cắt đáy ngọt ngào, KHÔNG AI BỊ LÒI RA NGOÀI! */
+  .torn-bottom::after{
+    z-index:10!important;
+    height:64px!important;
+    bottom:-2px!important;
+  }
+
+  /* BẢNG TÊN: Đặt ở bottom:76px để NẰM CAO HƠN MÉP RÁCH (64px), nằm trọn vẹn trên ngực áo */
+  .tm .nametag{
+    position:absolute!important;
+    z-index:15!important;
+    bottom:76px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    text-align:center!important;
+    background:none!important;
+    clip-path:none!important;
+    filter:none!important;
+    padding:0!important;
+    line-height:1!important;
+    pointer-events:none!important;
+  }
+  .nametag::before{
+    content:""!important;
+    position:absolute!important;
+    inset:-10px -16px!important;
+    z-index:-1!important;
+    background:radial-gradient(ellipse at center,rgba(8,18,26,.8),transparent 75%)!important;
+  }
+  .nametag b{
+    font-family:var(--script)!important;
+    font-style:italic!important;
+    font-weight:700!important;
+    font-size:13.5px!important;
+    color:#fff!important;
+    text-shadow:0 2px 8px rgba(0,0,0,.95),0 1px 2px rgba(0,0,0,.9)!important;
+    line-height:1.2!important;
+    display:block!important;
+    white-space:normal!important;
+  }
+  .nametag span{
+    display:block!important;
+    font-family:var(--display)!important;
+    font-weight:800!important;
+    font-size:7.5px!important;
+    letter-spacing:.06em!important;
+    text-transform:uppercase!important;
+    color:#e3c565!important;
+    border-top:1px solid rgba(227,197,101,.8)!important;
+    padding-top:3px!important;
+    margin-top:3px!important;
+    text-shadow:0 1px 6px rgba(0,0,0,.95)!important;
+    line-height:1.25!important;
+    white-space:normal!important;
+  }
+
+  /* Định vị từng bảng tên để không bao giờ bị cắt mép */
+  .tm-l .nametag{
+    left:58%!important;
+    right:auto!important;
+    transform:translateX(-50%) rotate(-3deg)!important;
+    max-width:125px!important;
+  }
+  .tm-c .nametag{
+    left:50%!important;
+    right:auto!important;
+    transform:translateX(-50%) rotate(-3deg)!important;
+    max-width:130px!important;
+  }
+  .tm-r .nametag{
+    left:48%!important;
+    right:auto!important;
+    transform:translateX(-50%) rotate(-3deg)!important;
+    max-width:130px!important;
+  }
 
   /* 2. SPEAKER: ảnh so le trái/phải, chồng nhẹ lên nhau */
   .ex-row{row-gap:0!important}
   .ex{width:100%}
-  .ex2,.ex3{margin-top:-28px!important}
+  .ex2,.ex3{margin-top:18px!important}
   .ex3{grid-template-columns:minmax(0,36%) minmax(0,64%)!important}
   .ex3 .ex-photo{grid-column:2!important}
   .ex3 .ex-note{grid-column:1!important;padding-left:0!important;padding-right:14px}
@@ -1293,10 +1419,17 @@ footer{background:var(--surface);padding:44px 0 36px;color:var(--muted);font-siz
 .testi-dots{display:none;justify-content:center;gap:10px;margin-top:6px}
 .testi-dots button{width:10px;height:10px;border-radius:50%;border:none;padding:0;background:#d6d9dc;cursor:pointer}
 .testi-dots button.on{background:#0c1b26}
-@media(max-width:760px){
- .tm-l .nametag{left:62%!important}.tm-r .nametag{left:38%!important}
- .nametag b{font-size:14px!important;max-width:110px!important}
- .ex2,.ex3{margin-top:18px!important}
+
+/* Màn hình nhỏ hơn (iPhone SE, Galaxy 360-380px) */
+@media(max-width:390px){
+  .tm-l{margin-right:-80px!important}
+  .tm-r{margin-left:-90px!important}
+  .tm-l img{height:265px!important}
+  .tm-c img{height:288px!important}
+  .tm-r img{height:242px!important;margin-bottom:26px!important}
+  .tm .nametag{bottom:66px!important}
+  .nametag b{font-size:12px!important}
+  .nametag span{font-size:6.8px!important;letter-spacing:.04em!important}
 }
 </style>
 </head>
@@ -1640,7 +1773,6 @@ footer{background:var(--surface);padding:44px 0 36px;color:var(--muted);font-siz
 
     <div class="sch-cta reveal">
       <a href="#form" class="btn btn-white">Giữ chỗ cho gia đình tôi <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      <p class="cta-note">Khai giảng <span data-event-date>[ngày]</span> · Mỗi đợt <span data-seats>[X]</span> gia đình</p>
     </div>
   </div>
 </section>
@@ -1796,18 +1928,24 @@ footer{background:var(--surface);padding:44px 0 36px;color:var(--muted);font-siz
   <span class="dots" style="top:16%;right:4%"></span>
   <div class="container form-layout">
     <div class="form-copy reveal">
-      <h2 class="display">Giữ chỗ cho <span class="script">gia đình bạn</span></h2>
-      <p class="lead">Mỗi đợt chỉ nhận <span data-seats>[X]</span> gia đình để cố vấn kịp gặp 1-1 từng nhà. Đợt này khai giảng ngày <span data-event-date>[ngày]</span>.</p>
+      <h2 class="display">Khảo sát nhu cầu <span class="script">tài chính gia sản</span></h2>
+      <p class="lead">Hãy tham gia cùng Tâm Giao để bắt đầu hành trình tạo dựng đời sống tài chính an tâm</p>
       <ul>
-        <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 3 buổi tối online + buổi khởi động</li>
-        <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg> 5 công cụ mang về</li>
-        <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg> 1 buổi gặp riêng cố vấn</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Nhìn rõ bức tranh tài sản tổng thể</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg> Rà soát danh mục & bảo toàn gia sản</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg> 1 buổi gặp riêng 1-1 cùng Cố vấn gia sản</li>
       </ul>
     </div>
 
     <div class="form-container reveal">
-      <h3 class="form-title">Đăng ký tham gia</h3>
-      <p class="form-sub">Chỉ mất 30 giây. Chưa cần bất kỳ con số tài chính nào.</p>
+      <h3 class="form-title">Khảo sát & Đăng ký tư vấn</h3>
+      <p class="form-sub">Chỉ mất 45 giây. Thông tin được bảo mật tuyệt đối.</p>
+
+      <!-- Khung nhúng Google Forms (nếu bạn dùng link embed Google Form) -->
+      <div id="googleFormWrapper" style="display:none; width:100%; min-height:680px; border-radius:8px; overflow:hidden;">
+        <iframe id="googleFormIframe" src="" width="100%" height="780" frameborder="0" marginheight="0" marginwidth="0" style="width:100%; border:none; display:block;">Đang tải biểu mẫu khảo sát...</iframe>
+      </div>
+
       <form id="regForm" novalidate>
         <div class="form-fields">
           <div class="form-group">
@@ -1815,41 +1953,55 @@ footer{background:var(--surface);padding:44px 0 36px;color:var(--muted);font-siz
             <input type="text" id="fullname" name="fullname" placeholder="VD: Nguyễn Văn An" autocomplete="name" required>
             <div class="form-error" role="alert" aria-live="polite">Vui lòng nhập họ và tên</div>
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="phone">Số điện thoại (Zalo) *</label>
-              <input type="tel" id="phone" name="phone" placeholder="VD: 0912345678" autocomplete="tel" inputmode="tel" required>
-              <div class="form-error" role="alert" aria-live="polite">SĐT gồm 10 số, bắt đầu bằng 0</div>
-            </div>
-            <div class="form-group">
-              <label for="email">Email *</label>
-              <input type="email" id="email" name="email" placeholder="VD: ban@email.com" autocomplete="email" required>
-              <div class="form-error" role="alert" aria-live="polite">Vui lòng nhập email hợp lệ</div>
-            </div>
+
+          <div class="form-group">
+            <label for="phone">Số điện thoại (Zalo) *</label>
+            <input type="tel" id="phone" name="phone" placeholder="VD: 0912345678" autocomplete="tel" inputmode="tel" required>
+            <div class="form-error" role="alert" aria-live="polite">SĐT gồm 10 số, bắt đầu bằng 0</div>
           </div>
 
-          <!-- [CUSTOM-FIELDS] Trường tùy chỉnh theo content AN TÂM: hình thức tham gia + khu vực gặp cố vấn + đồng ý -->
-          <div class="form-group form-group-check">
-            <span class="check-group-label">Bạn tham gia *</span>
-            <div class="seg">
-              <label class="check-row"><input type="radio" name="tham_gia" value="mot-minh" required><span>Một mình</span></label>
-              <label class="check-row"><input type="radio" name="tham_gia" value="cung-vo-chong"><span>Cùng vợ/chồng</span></label>
-            </div>
-            <div class="form-error" role="alert" aria-live="polite">Vui lòng chọn hình thức tham gia</div>
-          </div>
+          <!-- Câu hỏi 1 -->
           <div class="form-group">
-            <label for="khu_vuc">Khu vực gặp cố vấn *</label>
-            <!-- TODO: cập nhật danh sách khu vực theo văn phòng FIDT thực tế -->
-            <select id="khu_vuc" name="khu_vuc" required>
-              <option value="">-- Chọn khu vực --</option>
-              <option value="tp-hcm">TP. Hồ Chí Minh</option>
-              <option value="ha-noi">Hà Nội</option>
-              <option value="khac">Tỉnh/thành khác</option>
+            <label for="ban_tam">Bận tâm lớn nhất của gia đình về tài chính - gia sản lúc này? *</label>
+            <select id="ban_tam" name="ban_tam" required>
+              <option value="">-- Vui lòng chọn mối bận tâm --</option>
+              <option value="Tai san rai rac, chua ro buc tranh tong the">Tài sản rải rác (BĐS, cổ phiếu, tiết kiệm...), chưa có bức tranh tổng thể</option>
+              <option value="Dong tien tot nhung lo ngai rui ro thi truong">Dòng tiền/thu nhập tốt nhưng lo ngại rủi ro thị trường</option>
+              <option value="Chua co ke hoach chuyen giao cho the he sau">Chưa có kế hoạch chuẩn bị và chuyển giao tài sản cho con cái</option>
+              <option value="Vo chong chua thuc su dong thuan muc tieu dai han">Vợ chồng chưa thực sự đồng thuận mục tiêu tài chính dài hạn</option>
+              <option value="Khac">Mối bận tâm khác</option>
             </select>
-            <div class="form-error" role="alert" aria-live="polite">Vui lòng chọn khu vực</div>
+            <div class="form-error" role="alert" aria-live="polite">Vui lòng chọn mối bận tâm của bạn</div>
           </div>
+
+          <!-- Câu hỏi 2 -->
+          <div class="form-group">
+            <label for="muc_tieu">Mục tiêu gia đình muốn đạt được nhất trong 1 - 3 năm tới? *</label>
+            <select id="muc_tieu" name="muc_tieu" required>
+              <option value="">-- Vui lòng chọn mục tiêu ưu tiên --</option>
+              <option value="Xay dung ban do tai chinh 10 nam & toi uu danh muc an toan">Xây dựng bản đồ tài chính 10 năm & tối ưu danh mục đầu tư an toàn</option>
+              <option value="Doc lap tai chinh & an tam dong tien chay deu de nghi ngoi">Độc lập tài chính & an tâm nghỉ ngơi mà dòng tiền vẫn chảy đều</option>
+              <option value="Chuan bi ngan sach hoc van lon cho con">Chuẩn bị ngân sách học vấn lớn cho con (du học, lập nghiệp)</option>
+              <option value="Can chuyen gia doc lap dong hanh ra soat 1-1">Cần chuyên gia tài chính độc lập đồng hành rà soát định kỳ 1-1</option>
+              <option value="Khac">Mục tiêu khác</option>
+            </select>
+            <div class="form-error" role="alert" aria-live="polite">Vui lòng chọn mục tiêu ưu tiên</div>
+          </div>
+
+          <!-- Câu hỏi 3 -->
+          <div class="form-group">
+            <label for="hinh_thuc">Hình thức mong muốn Tâm Giao đồng hành? *</label>
+            <select id="hinh_thuc" name="hinh_thuc" required>
+              <option value="">-- Vui lòng chọn hình thức đồng hành --</option>
+              <option value="Tham gia thu thach online de tu nhin ro buc tranh tai chinh">Tham gia thử thách online để tự nhìn rõ bức tranh tài chính</option>
+              <option value="Dat lich gap rieng 1-1 cung Co van gia san cho nha toi">Đặt lịch gặp riêng 1-1 cùng Cố vấn gia sản cho gia đình tôi</option>
+              <option value="Nhan tai lieu & cong cu tu ra soat tai chinh qua Zalo">Nhận tài liệu & công cụ tự rà soát tài chính qua Zalo trước</option>
+            </select>
+            <div class="form-error" role="alert" aria-live="polite">Vui lòng chọn hình thức đồng hành</div>
+          </div>
+
           <div class="form-group form-group-check">
-            <label class="check-row"><input type="checkbox" id="agree" name="agree" required><span>Tôi đồng ý với <a href="chinh-sach-bao-mat.html" target="_blank" rel="noopener">Chính sách bảo mật</a> và cho phép FIDT liên hệ qua SĐT/Zalo.</span></label>
+            <label class="check-row"><input type="checkbox" id="agree" name="agree" required checked><span>Tôi đồng ý với <a href="chinh-sach-bao-mat.html" target="_blank" rel="noopener">Chính sách bảo mật</a> và cho phép Tâm Giao liên hệ qua SĐT/Zalo.</span></label>
             <div class="form-error" role="alert" aria-live="polite">Vui lòng tích vào ô đồng ý</div>
           </div>
 
@@ -1859,15 +2011,15 @@ footer{background:var(--surface);padding:44px 0 36px;color:var(--muted);font-siz
             <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
           </div>
 
-          <button type="submit" class="btn btn-primary" id="submitBtn"><span class="spin"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg></span>Giữ chỗ cho gia đình tôi</button>
-          <p class="form-trust"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Bạn sẽ nhận link tham gia qua Zalo trong 24 giờ.</p>
+          <button type="submit" class="btn btn-primary" id="submitBtn"><span class="spin"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg></span>Gửi thông tin khảo sát</button>
+          <p class="form-trust"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Thông tin được bảo mật và Cố vấn Tâm Giao sẽ liên hệ qua Zalo trong 24 giờ.</p>
         </div>
       </form>
 
       <div class="form-thanks" id="formThanks" style="display:none">
         <div class="confirmed-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
-        <h3>Đã giữ chỗ cho gia đình bạn!</h3>
-        <p>FIDT sẽ gửi link tham gia qua Zalo trong 24 giờ. Hẹn gặp bạn ở buổi khởi động ngày <span data-event-date>[ngày]</span>.</p>
+        <h3>Đã nhận thông tin khảo sát!</h3>
+        <p>Tâm Giao đã ghi nhận câu trả lời của bạn. Cố vấn gia sản sẽ liên hệ qua Zalo trong 24 giờ để gửi phân tích và đồng hành cùng gia đình bạn.</p>
       </div>
     </div>
   </div>
@@ -1903,34 +2055,52 @@ footer{background:var(--surface);padding:44px 0 36px;color:var(--muted);font-siz
       <a href="#form" class="btn btn-white" data-pick="mot-minh">Tôi tham gia một mình</a>
       <a href="#form" class="btn btn-ghost-white" data-pick="cung-vo-chong">Đăng ký cho cả hai vợ chồng</a>
     </div>
-    <p class="cta-note">Còn <span data-seats>[X]</span> chỗ · Khai giảng <span data-event-date>[ngày]</span></p>
   </div>
 </section>
 </main>
 
 <!-- =================== FOOTER =================== -->
 <footer>
-  <div class="container">
-    <div class="footer-top">
-      <a href="#" class="logo" aria-label="Tâm Giao - Powered by FIDT"><img src="logo-tamgiao.png" alt="Tâm Giao - Powered by FIDT" class="logo-img footer-logo" width="488" height="264" loading="lazy"></a>
-      <div class="footer-contact">
-        <!-- TODO: điền thông tin liên hệ thật -->
-        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> [Hotline]</span>
-        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a2 2 0 0 1-2.06 0L2 7"/></svg> [Email]</span>
-        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> [Địa chỉ văn phòng]</span>
-      </div>
+  <div class="footer-wrap">
+    <div class="disclaimer-box">
+      <h3 class="disclaimer-title">TUYÊN BỐ MIỄN TRỪ TRÁCH NHIỆM <span class="tag-en">(DISCLAIMER)</span></h3>
+      <p class="disclaimer-p">Chúng tôi không tin vào các chương trình “làm giàu nhanh”. Chúng tôi tin vào sự chăm chỉ, việc tạo ra giá trị thực, xây dựng một sự nghiệp chuyên nghiệp và bền vững, cũng như phục vụ người khác với tinh thần xuất sắc và nhất quán.</p>
+      <p class="disclaimer-p">Thông tin và kiến thức được chia sẻ tại đây nhằm mục đích giáo dục và truyền cảm hứng. Không có cam kết hay bảo đảm nào về việc bạn sẽ đạt được kết quả cụ thể. Kết quả thực tế sẽ phụ thuộc vào nhiều yếu tố như tư duy, kỹ năng, sự kiên trì, kinh nghiệm và năng lực hành động của từng cá nhân. Kiến thức chúng tôi cung cấp chỉ là một phần trong hành trình đó.</p>
+      <p class="disclaimer-p">Chúng tôi khuyến khích bạn hãy tiếp cận mọi thông tin với sự tỉnh táo, chịu trách nhiệm với quyết định của mình và cam kết theo đuổi sự phát triển lâu dài.</p>
     </div>
+
     <div class="footer-links">
       <a href="chinh-sach-bao-mat.html" target="_blank" rel="noopener">Chính sách bảo mật</a>
+      <span class="sep">·</span>
       <a href="dieu-khoan-su-dung.html" target="_blank" rel="noopener">Điều khoản dịch vụ</a>
+      <span class="sep">·</span>
       <a href="#faq">Hỏi đáp</a>
     </div>
-    <p class="disclaimer">Nội dung chương trình mang tính giáo dục tài chính, không phải khuyến nghị đầu tư. Mọi quyết định tài chính cần dựa trên tình hình cụ thể của từng gia đình.</p>
-    <p class="footer-copy">&copy; 2026 [Tên doanh nghiệp FIDT]. All rights reserved.</p>
+    <p class="footer-copy">&copy; 2026 Tâm Giao · Powered by FIDT. All rights reserved.</p>
   </div>
 </footer>
 
 <div class="sticky-cta" id="stickyCta"><a href="#form" class="btn btn-primary">Giữ chỗ cho gia đình tôi</a></div>
+
+<!-- Audio Player ẩn hoàn toàn, không hiện bất kỳ màn hình nào -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="nhac-nen.mp3?v=lofi" type="audio/mpeg">
+  <source src="nhac-nen.m4a?v=lofi" type="audio/mp4">
+</audio>
+
+<!-- Nút Icon Loa nhỏ ở góc dưới bên trái -->
+<button type="button" class="music-toggle" id="musicToggleBtn" aria-label="Bật nhạc nền">
+  <span class="music-icon-wrap" id="musicIconWrap">
+    <svg id="iconMute" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+    <svg id="iconPlay" style="display:none;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+  </span>
+  <span class="music-label" id="musicLabel">Bật nhạc</span>
+  <span class="music-waves" aria-hidden="true">
+    <span class="music-wave-bar"></span>
+    <span class="music-wave-bar"></span>
+    <span class="music-wave-bar"></span>
+  </span>
+</button>
 
 <script>
 /* =========================================================
@@ -1939,12 +2109,37 @@ footer{background:var(--surface);padding:44px 0 36px;color:var(--muted);font-siz
 var CONFIG = {
   EVENT_DATE_ISO: '', // TODO: ngày giờ buổi khởi động (Ngày 0), ví dụ '2026-10-19T20:00:00+07:00'
   EVENT_TIME_TEXT: '20:00 - 21:30',            // TODO: khung giờ mỗi buổi
-  SEATS: '[X]'                                  // TODO: số gia đình mỗi đợt, ví dụ '30'
+  SEATS: '[X]',                                 // TODO: số gia đình mỗi đợt, ví dụ '30'
+
+  // === CÁCH 1: Dùng Formspree.io (Khuyên dùng - Đơn giản nhất, giữ nguyên giao diện đẹp Tâm Giao) ===
+  // 1. Vào formspree.io tạo form mới -> Bật tab Settings -> Apps -> Google Sheets (tự động lưu vào Sheet)
+  // 2. Dán link endpoint vào đây:
+  FORMSPREE_URL: '', // Ví dụ: 'https://formspree.io/f/xovjbclk'
+
+  // === CÁCH 2: Nhúng trực tiếp Google Form qua iframe ===
+  // 1. Tạo Google Form có các trường trên -> Bấm "Gửi" -> Icon "<>" (Nhúng HTML) -> Copy link src
+  // 2. Dán link embed vào đây (khi có link này, trang sẽ tự động hiển thị Google Form thay thế):
+  GOOGLE_FORM_EMBED_URL: '' // Ví dụ: 'https://docs.google.com/forms/d/e/.../viewform?embedded=true'
 };
-// TODO: URL Google Apps Script Web App (/exec) sau khi deploy Code.gs
+// === CÁCH 3: URL Google Apps Script Web App (/exec) nếu dùng Code.gs ===
 var WEBHOOK_URL = 'https://script.google.com/macros/s/YOUR_DEPLOY_ID/exec';
-// TODO: PHẢI khớp SECRET_TOKEN trong Code.gs (chỉ là lớp chặn bot đơn giản, không phải bảo mật thật)
 var GAS_SECRET = 'YOUR-RANDOM-32-CHAR-STRING';
+
+/* Tự động nhúng Google Forms nếu có link GOOGLE_FORM_EMBED_URL */
+(function(){
+  if (CONFIG.GOOGLE_FORM_EMBED_URL && CONFIG.GOOGLE_FORM_EMBED_URL.trim() !== '') {
+    var wrapper = document.getElementById('googleFormWrapper');
+    var iframe = document.getElementById('googleFormIframe');
+    var nativeForm = document.getElementById('regForm');
+    if (wrapper && iframe && nativeForm) {
+      iframe.src = CONFIG.GOOGLE_FORM_EMBED_URL.trim();
+      wrapper.style.display = 'block';
+      nativeForm.style.display = 'none';
+      var ft = document.querySelector('.form-title'); if (ft) ft.textContent = 'Khảo sát nhu cầu gia sản';
+      var fs = document.querySelector('.form-sub'); if (fs) fs.textContent = 'Vui lòng hoàn tất biểu mẫu bên dưới';
+    }
+  }
+})();
 
 /* Đổ ngày / giờ / số chỗ vào mọi vị trí trên trang */
 (function(){
@@ -1973,6 +2168,7 @@ if(cdDays&&cdHours&&cdMins&&cdSecs){updateCountdown();setInterval(updateCountdow
 /* ========== Header, menu, anchor ========== */
 var header=document.getElementById('header');
 var stickyCta=document.getElementById('stickyCta');
+var musicBtnEl=document.getElementById('musicToggleBtn');
 var heroEl=document.querySelector('.hero');
 var formEl=document.getElementById('form');
 window.addEventListener('scroll',function(){
@@ -1980,7 +2176,9 @@ window.addEventListener('scroll',function(){
   var pastHero=window.scrollY>(heroEl.offsetTop+heroEl.offsetHeight-80);
   var fr=formEl.getBoundingClientRect();
   var formVisible=fr.top<window.innerHeight&&fr.bottom>0;
-  stickyCta.classList.toggle('show',pastHero&&!formVisible);
+  var showSticky=pastHero&&!formVisible;
+  stickyCta.classList.toggle('show',showSticky);
+  if(musicBtnEl) musicBtnEl.classList.toggle('shift-up',showSticky);
 },{passive:true});
 
 var menuToggle=document.getElementById('menuToggle');
@@ -2167,8 +2365,6 @@ regForm.querySelectorAll('[required]').forEach(function(input){
   input.addEventListener('input',function(){if(this.classList.contains('error'))validateField(this);});
   input.addEventListener('change',function(){validateField(this);});
 });
-document.querySelectorAll('input[name="tham_gia"]').forEach(function(r){r.addEventListener('change',function(){validateField(r);});});
-
 // Chờ IP + cookie _ttp sẵn sàng (tối đa 2.5s)
 function trackingReady(){return ipResolved&&!!getCookie('_ttp');}
 function waitForTracking(cb){if(trackingReady()){cb();return;}var waited=0;var iv=setInterval(function(){waited+=100;if(trackingReady()||waited>=2500){clearInterval(iv);cb();}},100);}
@@ -2187,17 +2383,21 @@ regForm.addEventListener('submit',function(e){
   waitForTracking(function(){
     var eventId='lead_'+Date.now()+'_'+Math.random().toString(36).substr(2,9);
     var queryParams=new URLSearchParams(window.location.search);
-    var thamGia=(document.querySelector('input[name="tham_gia"]:checked')||{}).value||'';
+    var banTam=(document.getElementById('ban_tam')||{}).value||'';
+    var mucTieu=(document.getElementById('muc_tieu')||{}).value||'';
+    var hinhThuc=(document.getElementById('hinh_thuc')||{}).value||'';
+    var fullname=(document.getElementById('fullname')||{}).value||'';
+    var phone=(document.getElementById('phone')||{}).value||'';
 
     var payload={
       event:'lead',
       secret:GAS_SECRET,
-      // Field người dùng nhập
-      fullname:document.getElementById('fullname').value.trim(),
-      email:document.getElementById('email').value.trim(),
-      phone:document.getElementById('phone').value.trim().replace(/[\s.\-]/g,''),
-      tham_gia:thamGia,
-      khu_vuc:document.getElementById('khu_vuc').value,
+      // Field khảo sát
+      fullname:fullname.trim(),
+      phone:phone.trim().replace(/[\s.\-]/g,''),
+      ban_tam:banTam,
+      muc_tieu:mucTieu,
+      hinh_thuc:hinhThuc,
       agree:document.getElementById('agree').checked,
       code:generateCode(),
       timestamp:new Date().toISOString(),
@@ -2218,37 +2418,138 @@ regForm.addEventListener('submit',function(e){
       gclid:queryParams.get('gclid')||'',msclkid:queryParams.get('msclkid')||''
     };
 
-    // KHÔNG gọi CAPI ở đây - storage Google Sheet chỉ lưu lead (các field tracking bị GAS drop).
-    // Nếu sau này đổi sang Webhook backend thì backend tự gọi Meta CAPI + TikTok Events API.
-    fetch(WEBHOOK_URL,{
-      method:'POST',
-      headers:{'Content-Type':'text/plain;charset=utf-8'}, // né CORS preflight của Apps Script
-      body:JSON.stringify(payload)
-    })
-    .then(function(r){return r.json().catch(function(){return {status:r.ok?'success':'error'};}).then(function(d){return {ok:r.ok,data:d};});})
-    .then(function(res){
+    function showSuccess(){
       submitBtn.classList.remove('loading');
-      if(res.ok&&res.data&&res.data.status==='success'){
-        // Fire CẢ 2 Pixel với CÙNG event_id
-        if(typeof fbq!=='undefined'){fbq('track','Lead',{content_name:'Hanh trinh An Tam - Thu thach 3 ngay'},{eventID:eventId});}
-        if(typeof ttq!=='undefined'){ttq.track('SubmitForm',{content_name:'Hanh trinh An Tam - Thu thach 3 ngay'},{event_id:eventId});}
-        // Lead-only: hiện lời cảm ơn
-        var ft=document.querySelector('.form-title');if(ft)ft.style.display='none';
-        var fs=document.querySelector('.form-sub');if(fs)fs.style.display='none';
-        document.querySelector('.form-fields').classList.add('hidden');
-        document.getElementById('formThanks').style.display='block';
-      }else{
-        submitBtn.disabled=false;
-        alert('Gửi đăng ký chưa thành công. Vui lòng thử lại nhé!');
-      }
-    })
-    .catch(function(err){
-      submitBtn.classList.remove('loading');submitBtn.disabled=false;
-      alert('Lỗi kết nối. Vui lòng thử lại nhé!');
-      console.error(err);
-    });
+      if(typeof fbq!=='undefined'){fbq('track','Lead',{content_name:'Khao sat tai chinh gia san'},{eventID:eventId});}
+      if(typeof ttq!=='undefined'){ttq.track('SubmitForm',{content_name:'Khao sat tai chinh gia san'},{event_id:eventId});}
+      var ft=document.querySelector('.form-title');if(ft)ft.style.display='none';
+      var fs=document.querySelector('.form-sub');if(fs)fs.style.display='none';
+      document.querySelector('.form-fields').classList.add('hidden');
+      document.getElementById('formThanks').style.display='block';
+      document.getElementById('formThanks').scrollIntoView({behavior:'smooth',block:'center'});
+    }
+
+    // 1. Nếu có cấu hình Formspree.io -> tự động đẩy data vào Google Sheets
+    if(CONFIG.FORMSPREE_URL && CONFIG.FORMSPREE_URL.indexOf('http') === 0){
+      fetch(CONFIG.FORMSPREE_URL,{
+        method:'POST',
+        headers:{'Accept':'application/json','Content-Type':'application/json'},
+        body:JSON.stringify({
+          'Họ và tên': payload.fullname,
+          'Số điện thoại (Zalo)': payload.phone,
+          'Bận tâm lớn nhất': payload.ban_tam,
+          'Mục tiêu ưu tiên': payload.muc_tieu,
+          'Hình thức đồng hành': payload.hinh_thuc,
+          'Mã giới thiệu': payload.code,
+          'Thời gian': payload.timestamp,
+          'UTM Source': payload.utm_source,
+          'UTM Campaign': payload.utm_campaign
+        })
+      })
+      .then(function(res){
+        if(res.ok){
+          showSuccess();
+        }else{
+          submitBtn.classList.remove('loading');submitBtn.disabled=false;
+          alert('Gửi thông tin chưa thành công. Vui lòng kiểm tra lại kết nối!');
+        }
+      })
+      .catch(function(err){
+        submitBtn.classList.remove('loading');submitBtn.disabled=false;
+        alert('Lỗi kết nối. Vui lòng thử lại!');
+      });
+      return;
+    }
+
+    // 2. Nếu có cấu hình Google Apps Script Web App (Code.gs)
+    if(WEBHOOK_URL && WEBHOOK_URL.indexOf('YOUR_DEPLOY_ID') === -1){
+      fetch(WEBHOOK_URL,{
+        method:'POST',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify(payload)
+      })
+      .then(function(r){return r.json().catch(function(){return {status:r.ok?'success':'error'};}).then(function(d){return {ok:r.ok,data:d};});})
+      .then(function(res){
+        if(res.ok&&res.data&&res.data.status==='success'){
+          showSuccess();
+        }else{
+          submitBtn.classList.remove('loading');submitBtn.disabled=false;
+          alert('Gửi đăng ký chưa thành công. Vui lòng thử lại nhé!');
+        }
+      })
+      .catch(function(err){
+        submitBtn.classList.remove('loading');submitBtn.disabled=false;
+        alert('Lỗi kết nối. Vui lòng thử lại nhé!');
+      });
+      return;
+    }
+
+    // 3. Fallback preview (khi test giao diện chưa gắn endpoint)
+    console.log('[Tâm Giao Form Data]', payload);
+    setTimeout(function(){
+      showSuccess();
+    }, 600);
   });
 });
+
+/* ========== Music Player (Nhạc nền bài Viết Tiếp Câu Chuyện Hòa Bình) ========== */
+(function(){
+  var musicBtn = document.getElementById('musicToggleBtn');
+  var musicLabel = document.getElementById('musicLabel');
+  var iconMute = document.getElementById('iconMute');
+  var iconPlay = document.getElementById('iconPlay');
+  var bgAudio = document.getElementById('bgMusic');
+  if(!musicBtn || !bgAudio) return;
+
+  function updateUI(playing) {
+    if (playing) {
+      musicBtn.classList.add('is-playing');
+      if (iconMute) iconMute.style.display = 'none';
+      if (iconPlay) iconPlay.style.display = 'block';
+      if (musicLabel) musicLabel.textContent = 'Tắt nhạc';
+      musicBtn.setAttribute('aria-label', 'Tắt âm thanh');
+    } else {
+      musicBtn.classList.remove('is-playing');
+      if (iconMute) iconMute.style.display = 'block';
+      if (iconPlay) iconPlay.style.display = 'none';
+      if (musicLabel) musicLabel.textContent = 'Bật nhạc';
+      musicBtn.setAttribute('aria-label', 'Bật âm thanh');
+    }
+  }
+
+  musicBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    if (bgAudio.paused) {
+      var promise = bgAudio.play();
+      if (promise !== undefined) {
+        promise.then(function() {
+          updateUI(true);
+        }).catch(function(err) {
+          console.warn('Lỗi phát âm thanh:', err);
+        });
+      } else {
+        updateUI(true);
+      }
+    } else {
+      bgAudio.pause();
+      updateUI(false);
+    }
+  });
+
+  bgAudio.addEventListener('play', function() { updateUI(true); });
+  bgAudio.addEventListener('pause', function() { updateUI(false); });
+  bgAudio.addEventListener('ended', function() { updateUI(false); });
+
+  // Tạm dừng nhạc nếu người dùng bấm xem video intro
+  var introV = document.getElementById('introVideo');
+  if (introV) {
+    introV.addEventListener('play', function() {
+      if (!bgAudio.paused) {
+        bgAudio.pause();
+      }
+    });
+  }
+})();
 </script>
 </body>
 </html>
