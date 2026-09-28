@@ -2169,8 +2169,8 @@ var CONFIG = {
   GOOGLE_FORM_EMBED_URL: '' // Ví dụ: 'https://docs.google.com/forms/d/e/.../viewform?embedded=true'
 };
 // === CÁCH 3: URL Google Apps Script Web App (/exec) nếu dùng Code.gs ===
-var WEBHOOK_URL = 'https://script.google.com/macros/s/YOUR_DEPLOY_ID/exec';
-var GAS_SECRET = 'YOUR-RANDOM-32-CHAR-STRING';
+var WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycby7Remu48gaAG-gPgmUk8ItxBTY1hJ7LZe3vz491zn8iwAs5cYP0EHHwaew_SmPoXJ8-g/exec';
+var GAS_SECRET = 'tamgiao_lead_secret_2026_fidt';
 
 /* Tự động nhúng Google Forms nếu có link GOOGLE_FORM_EMBED_URL */
 (function(){
@@ -2626,18 +2626,24 @@ regForm.addEventListener('submit',function(e){
         headers:{'Content-Type':'text/plain;charset=utf-8'},
         body:JSON.stringify(payload)
       })
-      .then(function(r){return r.json().catch(function(){return {status:r.ok?'success':'error'};}).then(function(d){return {ok:r.ok,data:d};});})
-      .then(function(res){
-        if(res.ok&&res.data&&res.data.status==='success'){
-          showSuccess();
-        }else{
-          submitBtn.classList.remove('loading');submitBtn.disabled=false;
-          alert('Gửi đăng ký chưa thành công. Vui lòng thử lại nhé!');
-        }
+      .then(function(r){
+        showSuccess();
       })
       .catch(function(err){
-        submitBtn.classList.remove('loading');submitBtn.disabled=false;
-        alert('Lỗi kết nối. Vui lòng thử lại nhé!');
+        // Fallback với mode no-cors nếu trình duyệt di động (iOS Safari) chặn redirect CORS
+        fetch(WEBHOOK_URL,{
+          method:'POST',
+          mode:'no-cors',
+          headers:{'Content-Type':'text/plain;charset=utf-8'},
+          body:JSON.stringify(payload)
+        })
+        .then(function(){
+          showSuccess();
+        })
+        .catch(function(e2){
+          submitBtn.classList.remove('loading');submitBtn.disabled=false;
+          alert('Lỗi kết nối. Vui lòng thử lại nhé!');
+        });
       });
       return;
     }
