@@ -74,7 +74,7 @@
   --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{font-family:var(--font);color:var(--text);background:var(--canvas);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:var(--blue)}
@@ -146,6 +146,7 @@ h2 .script,h3 .script,.display .script{font-size:calc(1.05em + 5px)!important;ve
 .logo-sub small{display:block;font-weight:500;font-size:12px;color:var(--muted)}
 .nav-status-pill{display:inline-flex;align-items:center;gap:7px;padding:6px 13px 6px 11px;background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.16);border-radius:999px;font-size:13px;font-weight:600;color:#ffffff;text-decoration:none;transition:all .24s cubic-bezier(0.16,1,0.3,1);white-space:nowrap;box-shadow:inset 0 1px 0 rgba(255,255,255,0.15);flex-shrink:0}
 .nav-status-pill:hover{background:rgba(255,255,255,0.18);border-color:rgba(227,197,101,0.55);color:#e3c565;transform:translateY(-1px)}
+.nav-status-pill:active{transform:scale(0.96)}
 .nav-status-dot{width:6px;height:6px;border-radius:50%;background:#e3c565;box-shadow:0 0 8px #e3c565;animation:navPulse 2s ease infinite}
 @keyframes navPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.45;transform:scale(0.85)}}
 .nav-menu{display:flex;align-items:center;gap:2px}
@@ -456,9 +457,15 @@ h2 .script,h3 .script,.display .script{font-size:calc(1.05em + 5px)!important;ve
 /* =================== FINAL CTA =================== */
 .final-cta{position:relative;overflow:hidden;padding:112px 0 96px;text-align:center;--edge-top:#fff}
 .final-cta h2{color:#fff;line-height:1.24}
-.final-title-text{font-size:clamp(20px,2.7vw,34px);letter-spacing:.01em;display:inline-block;vertical-align:baseline}
-.final-highlight{color:#e3c565!important;font-size:clamp(30px,4.2vw,52px)!important;margin-left:4px;padding:0 4px;display:inline-block;vertical-align:baseline;text-transform:none!important}
+.final-title-text{font-size:clamp(19px,2.7vw,34px);letter-spacing:.01em;display:inline-block;vertical-align:baseline}
+.final-line-1{display:inline}
+.final-line-2{display:inline-flex;align-items:baseline;justify-content:center;white-space:nowrap}
+.final-highlight{color:#e3c565!important;font-size:clamp(30px,4.2vw,52px)!important;margin-left:8px;padding:0 4px;display:inline-block;vertical-align:baseline;text-transform:none!important}
 .final-highlight .brush{position:absolute;left:-4%;bottom:-.22em;width:108%;height:.38em;z-index:-1;fill:#e3c565;overflow:visible;pointer-events:none}
+@media(max-width:768px){
+  .final-line-1{display:block;margin-bottom:6px}
+  .final-line-2{display:inline-flex;align-items:baseline;justify-content:center;white-space:nowrap}
+}
 .final-cta .lead{color:#fff;opacity:.9;max-width:680px;margin:18px auto 0}
 .final-cta .hero-cta{margin-top:30px}
 
@@ -517,6 +524,8 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
 @media(max-width:1024px){
   .nav-menu,.nav-sep{display:none}
   .menu-toggle{display:flex}
+  .nav-btn-cta{display:none!important}
+  .nav-status-pill{display:inline-flex}
   .q-layout,.about,.form-layout,.fp-layout{grid-template-columns:1fr;gap:40px}
   .intro-layout{grid-template-columns:1fr;gap:40px;justify-items:center}
   .q-grid.q-grid-4{grid-template-columns:1fr 1fr;margin-top:64px}
@@ -567,8 +576,10 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
   #header{top:12px;padding:0 12px}
   .header-container{height:48px;padding:4px 6px 4px 12px;gap:8px}
   .logo-img{height:25px!important}
-  .nav-status-pill{display:none}
-  .nav-btn-cta{height:34px;padding:0 14px;font-size:12.5px}
+  .nav-status-pill{display:inline-flex!important;height:34px;padding:0 12px 0 10px;font-size:12px;gap:6px}
+  .nav-status-pill svg{width:11px;height:11px}
+  .nav-status-dot{width:5px;height:5px}
+  .nav-btn-cta{display:none!important}
   .menu-toggle{width:34px;height:34px}
   .hero{padding:88px 0 96px}
 }
@@ -836,7 +847,7 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
 }
 
 /* ===== Hero kiểu Ramsey: nội dung giữa, 2 chuyên gia 2 bên ===== */
-.hero{text-align:center;padding:125px 0 0!important}
+.hero{text-align:center;padding:94px 0 0!important}
 .hero-stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,640px) minmax(0,1fr);gap:24px;align-items:end;max-width:1440px;margin:0 auto;padding:0 24px}
 .hero-center{text-align:center;padding-bottom:110px;min-width:0}
 .hero .hero-lockup{align-items:center!important}
@@ -1324,9 +1335,9 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
 .testi blockquote{font-size:15px!important;line-height:1.7!important}
 
 /* ================= MOBILE LAYOUT (chuẩn chỉnh như Desktop) ================= */
-@media(max-width:760px){
+@media(max-width:768px){
   /* 1. HERO */
-  .hero{padding:96px 0 0!important;overflow:hidden!important}
+  .hero{padding:74px 0 0!important;overflow:hidden!important}
   .hero-stage{padding:0!important}
   .hero-center{padding:0 16px!important}
   .hero .hero-facts{display:none!important}
@@ -1719,10 +1730,10 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
   flex-direction: column;
 }
 .wl-label {
-  font-size: 12.5px;
+  font-size: 13.5px;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.90);
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   padding-left: 8px;
   display: block;
 }
@@ -1735,12 +1746,12 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
 }
 .wl-input {
   width: 100%;
-  height: 46px;
+  height: 48px;
   background: rgba(3, 5, 8, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
   padding: 0 18px;
-  font-size: 14px;
+  font-size: 16px;
   color: #ffffff;
   transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
   outline: none;
@@ -1749,7 +1760,8 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.65), 0 1px 0 rgba(255, 255, 255, 0.16);
 }
 .wl-input::placeholder {
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(255, 255, 255, 0.40);
+  font-size: 15px;
 }
 .wl-input:focus {
   background: rgba(3, 5, 8, 0.92);
@@ -1762,9 +1774,9 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
   box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.22);
 }
 .wl-field-error {
-  font-size: 11.5px;
+  font-size: 12px;
   color: #fca5a5;
-  margin-top: 4px;
+  margin-top: 5px;
   padding-left: 10px;
   display: none;
 }
@@ -1788,18 +1800,20 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
   -webkit-appearance: none;
   cursor: pointer;
   padding-right: 40px;
+  font-size: 16px;
 }
 .wl-select option {
   background: #0d131d;
   color: #ffffff;
   padding: 8px 12px;
+  font-size: 16px;
 }
 /* Gender Segmented Pill */
 .wl-gender-toggle {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4px;
-  height: 46px;
+  height: 48px;
   background: rgba(3, 5, 8, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
@@ -1959,7 +1973,8 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
   }
   .wl-input,
   .wl-gender-toggle {
-    height: 44px;
+    height: 48px;
+    font-size: 16px !important;
   }
   .wl-btn-submit {
     height: 46px;
@@ -2773,7 +2788,7 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
   <span class="doodle" style="top:12%;left:6%;width:30px;height:30px"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
   <span class="doodle" style="bottom:22%;right:9%;width:40px;height:40px;color:#e3c565"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
   <div class="container reveal">
-    <h2 class="display final-title"><span class="final-title-text">Gia đình bạn xứng đáng được</span> <span class="hj-mk script final-highlight">an tâm<svg class="brush" viewBox="0 0 300 30" preserveAspectRatio="none" aria-hidden="true"><path d="M2 20 C 80 8, 200 4, 298 10 C 220 12, 120 18, 8 27 C 2 27, 0 22, 2 20 Z"/></svg></span></h2>
+    <h2 class="display final-title"><span class="final-title-text final-line-1">Gia đình bạn xứng đáng</span> <span class="final-line-2"><span class="final-title-text">được</span> <span class="hj-mk script final-highlight">an tâm<svg class="brush" viewBox="0 0 300 30" preserveAspectRatio="none" aria-hidden="true"><path d="M2 20 C 80 8, 200 4, 298 10 C 220 12, 120 18, 8 27 C 2 27, 0 22, 2 20 Z"/></svg></span></span></h2>
     <p class="lead">3 buổi tối. 5 công cụ. 1 lộ trình cho riêng nhà mình. Bạn muốn bắt đầu một mình, hay đăng ký cho cả hai vợ chồng?</p>
     <div class="hero-cta">
       <a href="#form" class="btn btn-white" data-pick="mot-minh">Tôi tham gia một mình</a>
