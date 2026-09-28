@@ -227,6 +227,12 @@ h2 .script,h3 .script,.display .script{font-size:calc(1.05em + 5px)!important;ve
 .intro-layout .q-intro{text-align:center}
 .intro-layout .q-intro h2.display{font-size:clamp(28px,3.4vw,42px)}
 .q-grid.q-grid-4{grid-template-columns:repeat(4,1fr);margin-top:80px}
+.q-btn-mobile-wrap{display:none}
+@media(max-width:768px){
+  .q-intro .q-btn-desktop{display:none!important}
+  .q-btn-mobile-wrap{display:flex;justify-content:center;margin-top:36px;width:100%}
+  .q-btn-mobile-wrap .btn{width:100%;max-width:420px;text-align:center;justify-content:center}
+}
 
 /* =================== PHƯƠNG PHÁP AN TÂM (band cam) =================== */
 .method{position:relative;overflow:hidden;padding:120px 0 128px;--edge-top:#fff;--edge-bottom:#fff}
@@ -565,7 +571,8 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
 @media (prefers-reduced-motion:reduce){.btn:hover,.btn:active,.video-play:hover,.video-play:active{transform:none!important}}
 .method .bracket{color:#13293a;border-top-color:#13293a}
 .method .bracket::before,.method .bracket::after{background:#13293a}
-.method .bracket.coach{color:#0c1b26;border-top-color:#0c1b26}
+.method .bracket.coach{color:#8c6d22!important;border-top-color:#e3c565!important}
+.method .bracket.coach::before,.method .bracket.coach::after{background:#e3c565!important}
 
 /* ===== Thẻ AN TÂM: đều nhau, chữ thường, Â + M khác màu ===== */
 .tiles{align-items:stretch}
@@ -597,14 +604,14 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
 }
 
 /* ===== Glassmorphism cho các block nội dung ===== */
-/* Kính sáng: block trên nền vàng (thẻ AN TÂM, ghi chú Ngày 0) - trong suốt 40% */
+/* Kính sáng: thẻ AN TÂM, ghi chú Ngày 0 - trong suốt 70% */
 .tile,.day0-note{
-  background:rgba(255,255,255,.6)!important;
+  background:rgba(255,255,255,.70)!important;
   -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,.8);
-  box-shadow:0 8px 24px rgba(12,27,38,.16),inset 0 1px 0 rgba(255,255,255,.7)!important;
+  border:1px solid rgba(255,255,255,.85)!important;
+  box-shadow:0 10px 28px rgba(12,27,38,.10),inset 0 1px 0 rgba(255,255,255,.9)!important;
 }
-.tile.coach{background:rgba(255,250,236,.6)!important;box-shadow:inset 0 0 0 2px #e3c565,0 8px 24px rgba(12,27,38,.16)!important}
+.tile.coach{background:rgba(255,250,236,.70)!important;border:1px solid rgba(255,255,255,.85)!important;box-shadow:inset 0 0 0 2px #e3c565,0 10px 28px rgba(12,27,38,.10),inset 0 1px 0 rgba(255,255,255,.85)!important}
 /* Kính tối: block trên nền navy (3 chặng, form, cam kết) */
 .stage,.form-container,.promise-item{
   background:rgba(255,255,255,.1)!important;
@@ -712,15 +719,27 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
   .note-a{right:-8px}.note-b{left:-6px}
 }
 
-/* Section Phương pháp AN TÂM - nền trắng */
-.method.method-light{background:#fff;padding:var(--section-y) 0}
+/* Section Phương pháp AN TÂM - nền sáng kính mờ */
+.method.method-light{background:linear-gradient(180deg,#fff 0%,#fbf8f1 45%,#fbf8f1 55%,#fff 100%);padding:var(--section-y) 0}
 .method-light .section-head .script{color:#a8842f!important}
 .method-light .lead{color:var(--muted)!important;opacity:1!important}
 .method-light .dots{background-image:radial-gradient(rgba(168,132,47,.45) 2px,transparent 2.5px)}
 .method-light .doodle{color:#e3c565!important}
-.method-light .tile,.method-light .day0-note{background:#fff!important;-webkit-backdrop-filter:none;backdrop-filter:none;border:1px solid #eee6d3;box-shadow:0 10px 26px rgba(12,27,38,.12)!important}
-.method-light .tile.coach{background:#fffaf0!important;border-color:transparent;box-shadow:inset 0 0 0 2px #e3c565,0 10px 26px rgba(12,27,38,.12)!important}
-.method-light .bracket{color:#13293a}
+.method-light .tile,.method-light .day0-note{background:rgba(255,255,255,.70)!important;-webkit-backdrop-filter:blur(10px)!important;backdrop-filter:blur(10px)!important;border:1px solid rgba(255,255,255,.85)!important;box-shadow:0 10px 28px rgba(12,27,38,.10),inset 0 1px 0 rgba(255,255,255,.9)!important}
+.method-light .tile.coach{background:rgba(255,250,236,.70)!important;-webkit-backdrop-filter:blur(10px)!important;backdrop-filter:blur(10px)!important;border:1px solid rgba(255,255,255,.85)!important;box-shadow:inset 0 0 0 2px #e3c565,0 10px 28px rgba(12,27,38,.10),inset 0 1px 0 rgba(255,255,255,.85)!important}
+.method-light .bracket{color:#13293a;border-top-color:#13293a}
+.method-light .bracket::before,.method-light .bracket::after{background:#13293a}
+.method-light .bracket.coach{color:#8c6d22!important;border-top-color:#e3c565!important}
+.method-light .bracket.coach::before,.method-light .bracket.coach::after{background:#e3c565!important}
+.method .section-head h2.display, .method-title-single{white-space:nowrap!important;text-wrap:nowrap!important}
+.method .section-head h2 .script, .method-title-single .script{color:#a8842f!important;font-size:1.18em!important;margin-left:6px!important;margin-right:0!important}
+@media(max-width:768px){
+  .method .section-head h2.display, .method-title-single{font-size:clamp(20px,6.2vw,30px)!important;white-space:nowrap!important;text-wrap:nowrap!important}
+  .method .section-head h2 .script, .method-title-single .script{font-size:1.16em!important;margin-left:5px!important;margin-right:0!important}
+}
+@media(max-width:380px){
+  .method .section-head h2.display, .method-title-single{font-size:20px!important}
+}
 
 /* Chữ "viết tay" dùng Playfair Display Bold Italic */
 .script{font-weight:700!important;font-style:italic;transform:none!important;letter-spacing:-.005em;line-height:1.1}
@@ -1233,15 +1252,15 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
 .fit2-mk{position:relative;display:inline-block;color:#a8842f}
 .fit2-mk::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:6px;border-radius:6px;background:linear-gradient(90deg,#c9a33f,#e3c565 60%,#f7e5a8)}
 .fit2-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-.fit2-card{background:linear-gradient(160deg,#1a3448 0%,#0f2231 100%);border:1px solid rgba(227,197,101,.18);border-radius:22px;padding:26px 24px 28px;color:#fff;box-shadow:0 14px 30px rgba(12,27,38,.18);transition:transform .25s,border-color .25s}
-.fit2-card:hover{transform:translateY(-4px);border-color:rgba(227,197,101,.5)}
+.fit2-card{background:rgba(16,35,50,.80);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.22);border-radius:22px;padding:26px 24px 28px;color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.15);transition:transform .25s,border-color .25s,box-shadow .25s}
+.fit2-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.45);box-shadow:0 16px 36px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.25)}
 .fit2-top{display:flex;gap:16px;align-items:flex-start;margin-bottom:14px}
-.fit2-ic{flex:0 0 56px;height:56px;border-radius:12px;border:1px solid rgba(227,197,101,.35);background:rgba(227,197,101,.08);display:flex;align-items:center;justify-content:center;color:#e3c565}
+.fit2-ic{flex:0 0 56px;height:56px;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:rgba(227,197,101,.14);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;color:#e3c565}
 .fit2-ic svg{width:28px;height:28px}
-.fit2-card h3{font-family:var(--display);font-weight:800;font-size:17px;line-height:1.4;text-transform:uppercase;color:#e3c565;letter-spacing:.01em}
-.fit2-card p{font-size:15px;line-height:1.65;color:rgba(255,255,255,.78)}
-.fit2-hl{display:flex;align-items:center;background:linear-gradient(160deg,#13293a 0%,#0a1620 100%);border-color:rgba(227,197,101,.45)}
-.fit2-big{font-family:var(--display);font-weight:800!important;font-size:17px!important;line-height:1.6!important;text-transform:uppercase;color:#fff!important}
+.fit2-card h3{font-family:var(--display);font-weight:800;font-size:17px;line-height:1.4;text-transform:uppercase;color:#e3c565;letter-spacing:.01em;text-shadow:0 1px 3px rgba(0,0,0,.4)}
+.fit2-card p{font-size:15px;line-height:1.65;color:rgba(255,255,255,.90);text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.fit2-hl{display:flex;align-items:center;background:rgba(12,27,38,.85);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-color:rgba(255,255,255,.28);box-shadow:0 10px 30px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.18)}
+.fit2-big{font-family:var(--display);font-weight:800!important;font-size:17px!important;line-height:1.6!important;text-transform:uppercase;color:#fff!important;text-shadow:0 1px 3px rgba(0,0,0,.4)}
 .fit2-big u{color:#e3c565;text-decoration-thickness:2px;text-underline-offset:4px}
 @media(max-width:1024px){.fit2-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.fit2{margin-top:72px}.fit2-grid{grid-template-columns:1fr;gap:18px}.fit2-card{padding:22px 20px}}
@@ -1532,7 +1551,7 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
       <h2 class="display">4 câu hỏi về tiền mà nhiều gia đình <span class="script">chưa trả lời được</span></h2>
       <p class="lead">Không phải vì bạn kiếm ít. Mà vì chưa ai ngồi xuống cùng bạn để nhìn toàn bộ bức tranh.</p>
       <p class="agitate">Nếu có câu bạn phải ngập ngừng, bạn không đơn độc. Điều đáng lo không phải là chưa biết. Điều đáng lo là chỉ nhận ra khi chuyện đã xảy ra, lúc mọi lựa chọn đều đắt hơn.</p>
-      <a href="#form" class="btn btn-primary">Tìm câu trả lời trong 3 buổi tối</a>
+      <a href="#form" class="btn btn-primary q-btn-desktop">Tìm câu trả lời trong 3 buổi tối</a>
     </div>
     </div>
     <div class="q-grid q-grid-4">
@@ -1540,6 +1559,9 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
       <div class="q-card reveal"><span class="num-badge">2</span><h3>Tiền mỗi tháng đi đâu?</h3><p>Lương về rồi đi. Cuối tháng không ai nhớ đã chi cho những gì.</p></div>
       <div class="q-card reveal"><span class="num-badge">3</span><h3>Nếu dừng làm việc, tiền từ đâu ra?</h3><p>Ốm một thời gian, mất việc, hay đơn giản là muốn nghỉ hưu sớm.</p></div>
       <div class="q-card reveal"><span class="num-badge">4</span><h3>Bao nhiêu là đủ cho nhà mình?</h3><p>Con học đại học, bố mẹ già đi, mình về hưu. Con số thật là bao nhiêu?</p></div>
+    </div>
+    <div class="q-btn-mobile-wrap reveal">
+      <a href="#form" class="btn btn-primary">Tìm câu trả lời trong 3 buổi tối</a>
     </div>
   </div>
 </section>
@@ -1651,7 +1673,7 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
   <span class="doodle" style="bottom:16%;right:6%;width:40px;height:40px;color:var(--navy)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg></span>
   <div class="container">
     <div class="section-head reveal">
-      <h2 class="display"><span class="script">Phương pháp</span> AN TÂM</h2>
+      <h2 class="display method-title-single" style="white-space:nowrap!important;text-wrap:nowrap!important;font-size:clamp(21px,6.2vw,44px)!important;">Phương pháp <span class="script">AN&nbsp;TÂM</span></h2>
       <p class="lead">5 chữ cái, 5 bước. Ba bước đầu bạn tự khám ở nhà. Hai bước sau bạn làm cùng cố vấn.</p>
     </div>
     <div class="tiles">
@@ -1938,7 +1960,7 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
     </div>
 
     <div class="form-container reveal">
-      <h3 class="form-title">Khảo sát & Đăng ký tư vấn</h3>
+      <h3 class="form-title">Khảo sát nhu cầu</h3>
       <p class="form-sub">Chỉ mất 45 giây. Thông tin được bảo mật tuyệt đối.</p>
 
       <!-- Khung nhúng Google Forms (nếu bạn dùng link embed Google Form) -->
@@ -2082,10 +2104,10 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
 
 <div class="sticky-cta" id="stickyCta"><a href="#form" class="btn btn-primary">Giữ chỗ cho gia đình tôi</a></div>
 
-<!-- Audio Player ẩn hoàn toàn, không hiện bất kỳ màn hình nào -->
 <audio id="bgMusic" loop preload="auto">
-  <source src="nhac-nen.mp3?v=lofi" type="audio/mpeg">
-  <source src="nhac-nen.m4a?v=lofi" type="audio/mp4">
+  <source src="Audio/Viết Tiếp Câu Chuyện Hòa Bình (Violin Cover) - ST- Nguyễn Văn Chung.mp3" type="audio/mpeg">
+  <source src="Audio/viet-tiep-cau-chuyen-hoa-binh.mp3" type="audio/mpeg">
+  <source src="nhac-nen.mp3" type="audio/mpeg">
 </audio>
 
 <!-- Nút Icon Loa nhỏ ở góc dưới bên trái -->
@@ -2135,7 +2157,7 @@ var GAS_SECRET = 'YOUR-RANDOM-32-CHAR-STRING';
       iframe.src = CONFIG.GOOGLE_FORM_EMBED_URL.trim();
       wrapper.style.display = 'block';
       nativeForm.style.display = 'none';
-      var ft = document.querySelector('.form-title'); if (ft) ft.textContent = 'Khảo sát nhu cầu gia sản';
+      var ft = document.querySelector('.form-title'); if (ft) ft.textContent = 'Khảo sát nhu cầu';
       var fs = document.querySelector('.form-sub'); if (fs) fs.textContent = 'Vui lòng hoàn tất biểu mẫu bên dưới';
     }
   }
