@@ -2105,8 +2105,10 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
 <div class="sticky-cta" id="stickyCta"><a href="#form" class="btn btn-primary">Giữ chỗ cho gia đình tôi</a></div>
 
 <audio id="bgMusic" loop preload="auto">
-  <source src="Audio/Viết Tiếp Câu Chuyện Hòa Bình (Violin Cover) - ST- Nguyễn Văn Chung.mp3" type="audio/mpeg">
+  <source src="viet-tiep-cau-chuyen-hoa-binh.mp3" type="audio/mpeg">
   <source src="Audio/viet-tiep-cau-chuyen-hoa-binh.mp3" type="audio/mpeg">
+  <source src="audio/viet-tiep-cau-chuyen-hoa-binh.mp3" type="audio/mpeg">
+  <source src="Audio/Viết Tiếp Câu Chuyện Hòa Bình (Violin Cover) - ST- Nguyễn Văn Chung.mp3" type="audio/mpeg">
   <source src="nhac-nen.mp3" type="audio/mpeg">
 </audio>
 
@@ -2547,7 +2549,13 @@ regForm.addEventListener('submit',function(e){
         promise.then(function() {
           updateUI(true);
         }).catch(function(err) {
-          console.warn('Lỗi phát âm thanh:', err);
+          console.warn('Lỗi phát âm thanh lần 1, thử nạp trực tiếp file:', err);
+          bgAudio.src = 'viet-tiep-cau-chuyen-hoa-binh.mp3';
+          bgAudio.play().then(function() {
+            updateUI(true);
+          }).catch(function(err2) {
+            console.warn('Lỗi phát âm thanh lần 2:', err2);
+          });
         });
       } else {
         updateUI(true);
