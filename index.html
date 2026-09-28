@@ -217,12 +217,19 @@ h2 .script,h3 .script,.display .script{font-size:calc(1.05em + 5px)!important;ve
 
 /* Section 2: video trái + tiêu đề phải, 4 câu hỏi bên dưới */
 .intro-layout{display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:center;max-width:1040px;margin:0 auto}
-.video-frame{position:relative;width:340px;aspect-ratio:9/16;border-radius:6px;overflow:hidden;background:#0c1b26;box-shadow:var(--elev-xl)}
-.video-frame video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
-.video-play{position:absolute;left:0;right:0;bottom:28px;margin:0 auto;width:84px;height:60px;border:none;border-radius:14px;background:var(--orange);color:var(--navy);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.35);transition:transform .2s,background .2s}
+.video-frame{position:relative;width:340px;aspect-ratio:9/16;border-radius:6px;overflow:hidden;background:#0c1b26;box-shadow:var(--elev-xl);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.video-frame video{width:100%;height:100%;object-fit:cover;display:block;background:#000;pointer-events:none}
+.video-frame.playing video{pointer-events:auto}
+.video-play{position:absolute;left:0;right:0;bottom:28px;margin:0 auto;width:84px;height:60px;border:none;border-radius:14px;background:var(--orange);color:var(--navy);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.35);transition:transform .2s,background .2s,opacity .2s}
 .video-play:hover{transform:scale(1.06);background:#d4b04f}
+.video-play-icon{display:flex;align-items:center;justify-content:center}
 .video-play svg{width:32px;height:32px;fill:currentColor}
-.video-badge{position:absolute;left:12px;top:12px;background:rgba(12,27,38,.8);color:#fff;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:3px}
+.video-play-spinner{display:none;width:28px;height:28px;border:3px solid rgba(12,27,38,.28);border-top-color:var(--navy);border-radius:50%;animation:video-spin .7s linear infinite}
+@keyframes video-spin{to{transform:rotate(360deg)}}
+.video-frame.loading .video-play{pointer-events:none}
+.video-frame.loading .video-play-icon{display:none}
+.video-frame.loading .video-play-spinner{display:block}
+.video-badge{position:absolute;left:12px;top:12px;background:rgba(12,27,38,.8);color:#fff;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:3px;pointer-events:none}
 .video-frame.playing .video-play,.video-frame.playing .video-badge{display:none}
 .intro-layout .q-intro{text-align:center}
 .intro-layout .q-intro h2.display{font-size:clamp(28px,3.4vw,42px)}
@@ -1538,12 +1545,15 @@ footer{background:#080c10;padding:64px 0 48px;color:rgba(255,255,255,.82);font-s
 <section class="section" id="cau-hoi">
   <div class="container">
     <div class="intro-layout">
-      <div class="video-frame reveal" id="videoFrame">
-        <!-- Video giới thiệu dọc 9:16. Bản gốc: video-intro.mp4 (45MB); trang dùng bản nén video-intro-web.mp4 (720p, faststart) -->
-        <video id="introVideo" playsinline preload="none" poster="video-intro-poster.jpg">
+      <div class="video-frame reveal" id="videoFrame" role="button" tabindex="0" aria-label="Bấm để phát video giới thiệu">
+        <!-- Video giới thiệu dọc 9:16 (720p, faststart, nạp metadata để bấm là chạy tức thì) -->
+        <video id="introVideo" playsinline webkit-playsinline x5-playsinline preload="metadata" poster="video-intro-poster.jpg">
           <source src="video-intro-web.mp4" type="video/mp4">
         </video>
-        <button class="video-play" id="videoPlay" aria-label="Phát video giới thiệu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg></button>
+        <button type="button" class="video-play" id="videoPlay" aria-label="Phát video giới thiệu">
+          <span class="video-play-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg></span>
+          <span class="video-play-spinner" aria-hidden="true"></span>
+        </button>
         <span class="video-badge">Xem 3 phút</span>
       </div>
       <div class="q-intro reveal">
@@ -2237,12 +2247,123 @@ document.querySelectorAll('[data-pick]').forEach(function(btn){
 });
 
 
-/* ========== Video giới thiệu ========== */
+/* ========== Video giới thiệu (Tối ưu Mobile: Chạm toàn khung, Preload, Loading State, Zero Delay) ========== */
 (function(){
-  var v=document.getElementById('introVideo'),b=document.getElementById('videoPlay'),f=document.getElementById('videoFrame');
-  if(!v||!b)return;
-  b.addEventListener('click',function(){v.setAttribute('controls','');f.classList.add('playing');v.play();});
-  v.addEventListener('play',function(){f.classList.add('playing');});
+  var v = document.getElementById('introVideo');
+  var b = document.getElementById('videoPlay');
+  var f = document.getElementById('videoFrame');
+  if (!v || !f) return;
+
+  var isStarting = false;
+
+  function triggerPlay() {
+    if (v.paused) {
+      if (isStarting) return;
+      isStarting = true;
+      f.classList.add('loading');
+
+      // Tạm dừng nhạc nền nếu đang phát
+      var bgAudio = document.getElementById('bgMusic');
+      if (bgAudio && !bgAudio.paused) {
+        bgAudio.pause();
+      }
+
+      var playPromise = v.play();
+      if (playPromise !== undefined) {
+        playPromise.then(function() {
+          isStarting = false;
+          f.classList.remove('loading');
+          f.classList.add('playing');
+          v.setAttribute('controls', '');
+        }).catch(function(err) {
+          isStarting = false;
+          f.classList.remove('loading');
+          console.warn('Lỗi play video lần 1:', err);
+          // Fallback cho mobile: gán controls và thử lại
+          v.setAttribute('controls', '');
+          v.play().then(function(){
+            f.classList.add('playing');
+          }).catch(function(e2){
+            console.warn('Lỗi play video lần 2:', e2);
+          });
+        });
+      } else {
+        isStarting = false;
+        f.classList.remove('loading');
+        f.classList.add('playing');
+        v.setAttribute('controls', '');
+      }
+    } else {
+      v.pause();
+    }
+  }
+
+  // 1. Chạm/click trực tiếp vào nút Play
+  if (b) {
+    b.addEventListener('click', function(e) {
+      e.stopPropagation();
+      triggerPlay();
+    });
+  }
+
+  // 2. Chạm vào bất kỳ vị trí nào trên toàn bộ khung video khi chưa phát
+  f.addEventListener('click', function(e) {
+    if (!f.classList.contains('playing')) {
+      e.preventDefault();
+      triggerPlay();
+    }
+  });
+
+  // Hỗ trợ bàn phím (Enter / Space)
+  f.addEventListener('keydown', function(e) {
+    if ((e.key === 'Enter' || e.key === ' ') && !f.classList.contains('playing')) {
+      e.preventDefault();
+      triggerPlay();
+    }
+  });
+
+  // 3. Sự kiện video thực sự bắt đầu phát khung hình đầu tiên
+  v.addEventListener('playing', function() {
+    isStarting = false;
+    f.classList.remove('loading');
+    f.classList.add('playing');
+    v.setAttribute('controls', '');
+  });
+
+  v.addEventListener('waiting', function() {
+    if (!v.paused) f.classList.add('loading');
+  });
+
+  v.addEventListener('canplay', function() {
+    f.classList.remove('loading');
+  });
+
+  // 4. Khi video kết thúc hoặc tạm dừng
+  v.addEventListener('pause', function() {
+    if (v.ended || v.currentTime === 0) {
+      f.classList.remove('playing');
+      f.classList.remove('loading');
+      v.removeAttribute('controls');
+    }
+  });
+
+  // 5. IntersectionObserver: Tự động nạp trước metadata khi cuộn gần đến video (cách 350px)
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          if (v.preload !== 'metadata' && v.preload !== 'auto') {
+            v.preload = 'metadata';
+          }
+          if (v.readyState === 0) {
+            v.load();
+          }
+          observer.disconnect();
+        }
+      });
+    }, { rootMargin: '350px 0px' });
+    observer.observe(f);
+  }
 })();
 
 

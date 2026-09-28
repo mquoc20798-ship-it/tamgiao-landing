@@ -31,14 +31,10 @@ var SHEET_LEADS = 'Leads';
 var LEAD_HEADERS = [
   'timestamp_server',
   // Form fields (user dien)
-  'fullname', 'email', 'phone', 'agree', 'code', 'timestamp',
+  'fullname', 'phone', 'ban_tam', 'muc_tieu', 'hinh_thuc', 'agree', 'code', 'timestamp',
   // URL parameters (query string khi user vao landing)
   'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'ref',
   'fbclid', 'gclid', 'ttclid', 'msclkid',
-  // Truong custom user them o cau hoi #4 - form fields tuy chinh (address/province/note/quantity...)
-  // de o day truoc extra_json:
-  // Truong tuy chinh cua LP Hanh trinh An Tam:
-  'tham_gia', 'khu_vuc',
   'extra_json'
 ];
 
